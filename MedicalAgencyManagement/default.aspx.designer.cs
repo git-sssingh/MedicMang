@@ -24,6 +24,42 @@ namespace MedicalAgencyManagement
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// errorMessageDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorMessageDiv;
+
+        /// <summary>
+        /// messageErrorDynamic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageErrorDynamic;
+
+        /// <summary>
+        /// successMessageDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMessageDiv;
+
+        /// <summary>
+        /// messageSuccessDynamic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageSuccessDynamic;
+
+        /// <summary>
         /// Username control.
         /// </summary>
         /// <remarks>
@@ -51,12 +87,12 @@ namespace MedicalAgencyManagement
         protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// Button1 control.
+        /// SignInButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button SignInButton;
     }
 }

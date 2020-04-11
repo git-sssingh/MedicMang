@@ -6281,6 +6281,8 @@
     <Content Include="dist\img\credit\visa.png" />
     <Content Include="dist\img\default-50x50.gif" />
     <Content Include="dist\img\icons.png" />
+    <Content Include="dist\img\mediMang-backgroundImage-2.jpg" />
+    <Content Include="dist\img\mediMang-backgroundImage.jpg" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\photo3.jpg" />
@@ -6476,6 +6478,7 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\defaultPage.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -6504,6 +6507,7 @@
     <Compile Include="Simple.Master.designer.cs">
       <DependentUpon>Simple.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utility\DataBaseConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower_components\bootstrap-colorpicker\.bower.json" />

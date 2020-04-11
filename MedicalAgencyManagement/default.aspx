@@ -22,18 +22,24 @@
 
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
 </head>
-<body class="hold-transition login-page" style="background: url(bg3.jpg) no-repeat center center fixed; background-size: cover">
+<body class="hold-transition login-page" style="background: url(/dist/img/mediMang-backgroundImage-2.jpg) no-repeat center center fixed; background-size: cover">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>MediMang</a>
+    <a href="#"><b>Admin</b>MediMang</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-
+      
     <form id="form1" runat="server">
+        <div class="alert alert-danger" runat="server" id="errorMessageDiv" hidden="true">
+            <strong>Error!</strong> <span runat="server" id="messageErrorDynamic"></span>
+        </div>
+        <div class="alert alert-info" runat="server" id="successMessageDiv" hidden="true">
+            <strong>Success!</strong> <span runat="server" id="messageSuccessDynamic"></span>
+        </div>
       <div class="form-group has-feedback">
-          <asp:TextBox ID="Username" TextMode="Email" runat="server" class="form-control" placeholder="Email"></asp:TextBox>
+          <asp:TextBox ID="Username" TextMode="SingleLine" runat="server" class="form-control" placeholder="UserName"></asp:TextBox>
         
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
@@ -50,7 +56,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <asp:Button ID="Button1" runat="server" Text="Sign In" class="btn btn-primary btn-block btn-flat" />
+            <asp:Button ID="SignInButton" runat="server" Text="Sign In" class="btn btn-primary btn-block btn-flat" OnClick="SignInButton_Click"   />
         </div>
         <!-- /.col -->
       </div>
@@ -69,15 +75,7 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+    <script src="Scripts/defaultPage.js"></script>
 </body>
 </html>
 
