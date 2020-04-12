@@ -6485,6 +6485,7 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\defaultPage.js" />
+    <Content Include="Scripts\MedicineManufacturer.js" />
     <Content Include="Settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -6548,6 +6549,7 @@
     <Compile Include="MedicineManufacturer.aspx.designer.cs">
       <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MedicineManufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
@@ -7185,7 +7187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
