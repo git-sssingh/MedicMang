@@ -17,49 +17,14 @@
                                 <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Customername" placeholder="Customer Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Mobile No.</label>
-
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="CustomerMobileNo" placeholder="Mobile No.">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Email Id</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputPassword3" placeholder="Email Id">
+                                    <input type="text" class="form-control" id="ManfufacturerName" placeholder="Customer Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Address</label>
 
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="CustomerAddress" placeholder="Address">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">City</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="CustomerCity" placeholder="City">
-                                </div>
-                            </div>
-                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">State</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="CustomerState" placeholder="State">
-                                </div>
-                            </div>
-                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Pin Code</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="CustomerPin" placeholder="Pin Code">
+                                    <textarea class="form-control" id="ManfufacturerDescription" placeholder="Address"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -97,6 +62,7 @@
                                     <th>Sr.No.</th>
                                     <th>Manufacturer Name</th>
                                     <th>Address</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,6 +73,7 @@
                                     <th>Sr.No.</th>
                                      <th>Manufacturer Name</th>
                                     <th>Address</th>
+                                    <th>Edit</th>
                                 </tr>
                             </tfoot>
                         </table>
