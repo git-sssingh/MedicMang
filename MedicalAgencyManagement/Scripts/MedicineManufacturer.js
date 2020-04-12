@@ -27,7 +27,7 @@ $(document).ready(function () {
                             + '</td><td>'
                             + value.Name
                             + '</td><td>'
-                        + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index+' onclick=editManufacturer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit"></i></div></td></tr>');
+                        + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editManufacturer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                 });
                 $('#example2').DataTable({
                     'paging': true,
