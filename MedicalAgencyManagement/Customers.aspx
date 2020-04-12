@@ -83,11 +83,11 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="col-sm-6">
-                            <h3 class="box-title" style="margin-left:-12px">Hover Data Table</h3>
+                            <h3 class="box-title" style="margin-left:-12px; margin-top:2px">Hover Data Table</h3>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right; margin-top:-8px">
-                            <button type="button" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="fa fa-address-book"></i>Add Customer</button>
+                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> Add Customer</button>
                         </div>
                         </div>
                     </div>
