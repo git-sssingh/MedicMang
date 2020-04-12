@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Billing.aspx" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -6229,6 +6230,7 @@
     <Content Include="build\js\PushMenu.js" />
     <Content Include="build\js\TodoList.js" />
     <Content Include="build\js\Tree.js" />
+    <Content Include="Customers.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="default.aspx" />
     <Content Include="dist\css\AdminLTE.css" />
@@ -6302,6 +6304,10 @@
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="Files\New Text Document.txt" />
     <Content Include="Global.asax" />
+    <Content Include="InvoiceSetting.aspx" />
+    <Content Include="ManageUsers.aspx" />
+    <Content Include="MedicineListing.aspx" />
+    <Content Include="MedicineManufacturer.aspx" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -6479,9 +6485,24 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\defaultPage.js" />
+    <Content Include="Settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing.aspx.cs">
+      <DependentUpon>Billing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Billing.aspx.designer.cs">
+      <DependentUpon>Billing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6499,7 +6520,42 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceSetting.aspx.cs">
+      <DependentUpon>InvoiceSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvoiceSetting.aspx.designer.cs">
+      <DependentUpon>InvoiceSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineListing.aspx.cs">
+      <DependentUpon>MedicineListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedicineListing.aspx.designer.cs">
+      <DependentUpon>MedicineListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineManufacturer.aspx.cs">
+      <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MedicineManufacturer.aspx.designer.cs">
+      <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Simple.Master.cs">
       <DependentUpon>Simple.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

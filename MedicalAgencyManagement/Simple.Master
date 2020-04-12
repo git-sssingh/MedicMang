@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+      <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -72,6 +72,10 @@
     <script src="dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -133,13 +137,13 @@
 
                     <section class="sidebar">
                         <ul class="sidebar-menu" data-widget="tree">
-                            <li><a href="#"><i class="fa fa-users"></i><span>Manage User</span></a></li>
-                            <li><a href="#"><i class="fa fa-cogs"></i><span>General Settings</span></a></li>
-                            <li><a href="#"><i class="fa fa-barcode"></i><span>Invoice Setting</span></a></li>
-                            <li><a href="#"><i class="fa fa-industry"></i><span>Medicine Manufacturer</span></a></li>
-                            <li><a href="#"><i class="fa fa-cubes"></i><span>Medicines Listing</span></a></li>
-                            <li><a href="#"><i class="fa fa-user-plus"></i><span>Customers</span></a></li>
-                            <li><a href="#"><i class="fa fa-bullhorn"></i><span>Billing</span></a></li>
+                            <li><a href="ManageUsers.aspx"><i class="fa fa-users"></i><span>Manage User</span></a></li>
+                            <li><a href="Settings.aspx"><i class="fa fa-cogs"></i><span>General Settings</span></a></li>
+                            <li><a href="InvoiceSetting.aspx"><i class="fa fa-barcode"></i><span>Invoice Setting</span></a></li>
+                            <li><a href="MedicineManufacturer.aspx"><i class="fa fa-industry"></i><span>Medicine Manufacturer</span></a></li>
+                            <li><a href="MedicineListing.aspx"><i class="fa fa-cubes"></i><span>Medicines Listing</span></a></li>
+                            <li><a href="Customers.aspx"><i class="fa fa-user-plus"></i><span>Customers</span></a></li>
+                            <li><a href="Billing.aspx"><i class="fa fa-bullhorn"></i><span>Billing</span></a></li>
                         </ul>
                     </section>
                 </aside>
