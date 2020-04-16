@@ -16,9 +16,18 @@ namespace MedicalAgencyManagement
         {
 
         }
-        [WebMethod]
-        public static List<Models.MedicineManufacturer> GetManufacturerList(string agencyId)
+        [WebMethod(EnableSession = true)]
+        public static List<Models.MedicineManufacturer> GetManufacturerList()
         {
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            string agencyId = string.Empty;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else {
+                agencyId = sessionData.Split(',')[2];
+            }
             Guid agencyPublicId;
             bool isAgencyValid = Guid.TryParse(agencyId, out agencyPublicId);
             var result = new List<Models.MedicineManufacturer>();
@@ -40,6 +49,36 @@ namespace MedicalAgencyManagement
             }
             else {
                 return result;
+            }
+        }
+
+        [WebMethod(EnableSession = true)]
+        public static string AddManufacturer(string name, string description)
+        {
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            string agencyId = string.Empty;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else
+            {
+                agencyId = sessionData.Split(',')[2];
+            }
+            Guid agencyPublicId;
+            bool isAgencyValid = Guid.TryParse(agencyId, out agencyPublicId);
+            string outPut = string.Empty;
+            if (isAgencyValid)
+            {
+                if (DataBaseConnection.Instance != null)
+                {
+                  DataBaseConnection.Instance.SelectQueryExecuter("exec AddMedicineManufacturer '" + name + "','"+description+"','"+ agencyPublicId + "','"+ outPut + "'");
+                }
+                return outPut;
+            }
+            else
+            {
+                return "Incorrect Agency!";
             }
         }
     }

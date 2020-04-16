@@ -3,6 +3,7 @@
 
 var editManufacturer;
 var manufacturerList;
+
 $(document).ready(function () {
     editManufacturer = function editManufacturer(manufacturerId) {
         $.each(manufacturerList, function (index, value) {
@@ -12,14 +13,14 @@ $(document).ready(function () {
             }
         });
     };
-    var getManufacturers = function () {
+    var getManufacturers = function (thisIsAddCall) {
         $.ajax({
             type: "POST",
             url: '/MedicineManufacturer.aspx/GetManufacturerList',
-            data: '{agencyId: "376B5EAE-6705-4FF4-B152-E8EC6F0E260D" }',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 manufacturerList = data.d;
+                console.log("Count: " + data.d.length);
                 $.each(data.d, function (index, value) {
                     $('#example2 tbody')
                         .append('<tr><td>'
@@ -30,18 +31,44 @@ $(document).ready(function () {
                         + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editManufacturer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                 });
                 $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': false,
-                    'autoWidth': false
+                        "processing": true,
+                        'paging': true,
+                        'lengthChange': true,
+                        'searching': true,
+                        'ordering': true,
+                        'info': false,
+                        'autoWidth': false,
+                        'buttons': [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
                 });
+                
             },
             failure: function (response) {
                 alert(response.d);
             }
         });
-};
-getManufacturers();
+    };
+
+    // Add Method
+    var addManufacturers = function () {
+        var manufacturername = $('#ManfufacturerName').val();
+        var manufacturerdescription = $('#ManfufacturerDescription').val();
+        $.ajax({
+            type: "POST",
+            url: '/MedicineManufacturer.aspx/AddManufacturer',
+            data: '{name : "' + manufacturername + '", description : "' + manufacturerdescription+'"}',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                getManufacturers(true);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    };
+    getManufacturers();
+    $("#AddManufacturerButton").click(function () {
+        addManufacturers();
+    });
 });
