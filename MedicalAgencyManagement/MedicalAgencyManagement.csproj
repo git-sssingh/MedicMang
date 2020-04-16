@@ -6484,6 +6484,7 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\Customer.js" />
     <Content Include="Scripts\defaultPage.js" />
     <Content Include="Scripts\MedicineManufacturer.js" />
     <Content Include="Settings.aspx" />
@@ -6549,6 +6550,7 @@
     <Compile Include="MedicineManufacturer.aspx.designer.cs">
       <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MedicineManufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.aspx.cs">

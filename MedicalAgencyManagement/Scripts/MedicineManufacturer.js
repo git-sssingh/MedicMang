@@ -13,14 +13,16 @@ $(document).ready(function () {
             }
         });
     };
-    var getManufacturers = function (thisIsAddCall) {
+    var getManufacturers = function (isAdd) {
         $.ajax({
             type: "POST",
             url: '/MedicineManufacturer.aspx/GetManufacturerList',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 manufacturerList = data.d;
-                console.log("Count: " + data.d.length);
+                if (isAdd) {
+                    $('#example2 tbody').empty();
+                }
                 $.each(data.d, function (index, value) {
                     $('#example2 tbody')
                         .append('<tr><td>'
@@ -31,18 +33,13 @@ $(document).ready(function () {
                         + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editManufacturer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                 });
                 $('#example2').DataTable({
-                        "processing": true,
-                        'paging': true,
-                        'lengthChange': true,
-                        'searching': true,
-                        'ordering': true,
-                        'info': false,
-                        'autoWidth': false,
-                        'buttons': [
-                            'copy', 'csv', 'excel', 'pdf', 'print'
-                        ]
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true
                 });
-                
             },
             failure: function (response) {
                 alert(response.d);
@@ -67,7 +64,7 @@ $(document).ready(function () {
             }
         });
     };
-    getManufacturers();
+    getManufacturers(false);
     $("#AddManufacturerButton").click(function () {
         addManufacturers();
     });

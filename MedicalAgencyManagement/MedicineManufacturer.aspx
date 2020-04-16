@@ -83,4 +83,9 @@
         </div>
     </section>
     <script src="Scripts/MedicineManufacturer.js"></script>
+    <script>
+        $(document).ready(function () {
+           
+        }
+    </script>
 </asp:Content>
