@@ -7,14 +7,16 @@ var CustomerList;
 $(document).ready(function () {
     editCustomer = function editCustomer(CustomerId) {
         $.each(CustomerList, function (index, value) {
-            $('#CustomerName').val(value.Name);
-            $('#CustomerPhoneNo').val(value.PhoneNo); 
-            $('#CustomerEmailId').val(value.EmailId); 
-            $('#CustomerAddress').val(value.Address); 
-            $('#CustomerCreateDate').val(value.CreateDate); 
-            $('#CustomerCity').val(value.City); 
-            $('#CustomerState').val(value.State); 
-            $('#CustomerPin').val(value.Pin); 
+            if (value.Id === CustomerId) {
+                $('#CustomerName').val(value.Name);
+                $('#CustomerPhoneNo').val(value.PhoneNo);
+                $('#CustomerEmailId').val(value.EmailId);
+                $('#CustomerAddress').val(value.Address);
+                $('#CustomerCreateDate').val(value.CreateDate);
+                $('#CustomerCity').val(value.City);
+                $('#CustomerState').val(value.State);
+                $('#CustomerPin').val(value.Pin);
+            }
         });
     };
     var getCustomers = function (isAdd) {
@@ -25,7 +27,7 @@ $(document).ready(function () {
             success: function (data) {
                 CustomerList = data.d;
                 if (isAdd) {
-                    $('#example2 tbody').empty();
+                    $('#example2').DataTable().destroy();
                 }
                 $.each(data.d, function (index, value) {
                     $('#example2 tbody')
@@ -39,7 +41,7 @@ $(document).ready(function () {
                             + value.PhoneNo
                             + '</td><td>'
                             + value.Address                            + '</td><td>'                            + value.CreateDate
-                            + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                        + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span><span style="margin-left:5px" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><a href="billing.aspx?customerId=' + value.Id+'"><i class="fa fa-paperclip" style="font-size: 1.5em; color: #c70039;"></i></a></span></td></tr>');
                 });
                 $('#example2').DataTable({
                     'paging': true,

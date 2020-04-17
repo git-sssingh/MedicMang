@@ -1,25 +1,25 @@
 ﻿// Scope related issue, so need to declare it first and then use it.
 // https://stackoverflow.com/questions/41527655/uncaught-referenceerror-function-is-not-defined-at-htmlbuttonelement-onclick
 
-var editManufacturer;
-var manufacturerList;
+var editMedicine;
+var MedicineList;
 
 $(document).ready(function () {
-    editManufacturer = function editManufacturer(manufacturerId) {
-        $.each(manufacturerList, function (index, value) {
-            if (value.Id === manufacturerId) {
-                $('#ManfufacturerName').val(value.Name); 
-                $('#ManfufacturerDescription').val(value.Address); 
+    editMedicine = function editMedicine(MedicineId) {
+        $.each(MedicineList, function (index, value) {
+            if (value.Id === MedicineId) {
+                $('#ManfufacturerName').val(value.Name);
+                $('#ManfufacturerDescription').val(value.Address);
             }
         });
     };
-    var getManufacturers = function (isAdd) {
+    var getMedicines = function (isAdd) {
         $.ajax({
             type: "POST",
-            url: '/MedicineManufacturer.aspx/GetManufacturerList',
+            url: '/MedicineListing.aspx/GetMedicineList',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                manufacturerList = data.d;
+                MedicineList = data.d;
                 if (isAdd) {
                     $('#example2').DataTable().destroy();
                 }
@@ -30,7 +30,7 @@ $(document).ready(function () {
                             + '</td><td>'
                             + value.Name
                             + '</td><td>'
-                        + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editManufacturer(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                            + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editMedicine(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                 });
                 $('#example2').DataTable({
                     'paging': true,
@@ -48,24 +48,24 @@ $(document).ready(function () {
     };
 
     // Add Method
-    var addManufacturers = function () {
-        var manufacturername = $('#ManfufacturerName').val();
-        var manufacturerdescription = $('#ManfufacturerDescription').val();
+    var addMedicines = function () {
+        var Medicinename = $('#ManfufacturerName').val();
+        var Medicinedescription = $('#ManfufacturerDescription').val();
         $.ajax({
             type: "POST",
-            url: '/MedicineManufacturer.aspx/AddManufacturer',
-            data: '{name : "' + manufacturername + '", description : "' + manufacturerdescription+'"}',
+            url: '/MedicineListing.aspx/AddMedicine',
+            data: '{name : "' + Medicinename + '", description : "' + Medicinedescription + '"}',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                getManufacturers(true);
+                getMedicines(true);
             },
             failure: function (response) {
                 alert(response.d);
             }
         });
     };
-    getManufacturers(false);
-    $("#AddManufacturerButton").click(function () {
-        addManufacturers();
+    getMedicines(false);
+    $("#AddMedicineButton").click(function () {
+        addMedicines();
     });
 });

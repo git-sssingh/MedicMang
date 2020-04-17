@@ -83,7 +83,7 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="col-sm-6">
-                            <h3 class="box-title" style="margin-left:-12px; margin-top:2px">Hover Data Table</h3>
+                            <h3 class="box-title" style="margin-left:-12px; margin-top:2px">Customers List</h3>
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right; margin-top:-8px">
@@ -125,9 +125,4 @@
         </div>
     </section>
     <script src="Scripts/Customer.js"></script>
-    <script>
-        $(document).ready(function () {
-          
-        }
-    </script>
 </asp:Content>

@@ -8,7 +8,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Add Customer</h4>
+                    <h4 class="modal-title">New Billing</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right; margin-top:-8px">
-                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> Add Customer</button>
+                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> New Billing</button>
                         </div>
                         </div>
                     </div>
