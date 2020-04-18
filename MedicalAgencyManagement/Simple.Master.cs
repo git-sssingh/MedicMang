@@ -17,6 +17,11 @@ namespace MedicalAgencyManagement
                 {
                     Response.Redirect("/");
                 }
+                else {
+                    var sessionData = Convert.ToString(Session["MediMangUser"]);
+                    userName.Text = sessionData.Split(',')[0];
+                    name.Text = userName.Text;
+                }
             }
         }
     }

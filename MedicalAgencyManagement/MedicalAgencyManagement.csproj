@@ -6305,6 +6305,7 @@
     <Content Include="Files\New Text Document.txt" />
     <Content Include="Global.asax" />
     <Content Include="InvoiceSetting.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="MedicineListing.aspx" />
     <Content Include="MedicineManufacturer.aspx" />
@@ -6531,6 +6532,13 @@
     <Compile Include="InvoiceSetting.aspx.designer.cs">
       <DependentUpon>InvoiceSetting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManageUsers.aspx.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6553,6 +6561,7 @@
       <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\MedicineManufacturer.cs" />
     <Compile Include="Models\Summery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

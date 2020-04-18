@@ -5,21 +5,15 @@ var editMedicine;
 var MedicineList;
 
 $(document).ready(function () {
-    editMedicine = function editMedicine(MedicineId) {
-        $.each(MedicineList, function (index, value) {
-            if (value.Id === MedicineId) {
-                $('#ManfufacturerName').val(value.Name);
-                $('#ManfufacturerDescription').val(value.Address);
-            }
-        });
-    };
+
     var getMedicines = function (isAdd) {
         $.ajax({
             type: "POST",
             url: '/MedicineListing.aspx/GetMedicineList',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                MedicineList = data.d;
+                console.log("This is just click..");
+                console.log(data.d);
                 if (isAdd) {
                     $('#example2').DataTable().destroy();
                 }
@@ -30,7 +24,18 @@ $(document).ready(function () {
                             + '</td><td>'
                             + value.Name
                             + '</td><td>'
-                            + value.Address + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editMedicine(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                            + value.Price
+                            + '</td><td>'
+                            + value.Mg
+                            + '</td><td>'
+                            + value.Manufacturer
+                            + '</td><td>'
+                            + value.ExpiryDate
+                            + '</td><td>'
+                            + value.MR
+                            + '</td><td>'
+                            + value.Description
+                            + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editMedicine(' + "'" + value.Id + "'" + ')><i class="fa fa-edit" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                 });
                 $('#example2').DataTable({
                     'paging': true,
@@ -47,25 +52,7 @@ $(document).ready(function () {
         });
     };
 
-    // Add Method
-    var addMedicines = function () {
-        var Medicinename = $('#ManfufacturerName').val();
-        var Medicinedescription = $('#ManfufacturerDescription').val();
-        $.ajax({
-            type: "POST",
-            url: '/MedicineListing.aspx/AddMedicine',
-            data: '{name : "' + Medicinename + '", description : "' + Medicinedescription + '"}',
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                getMedicines(true);
-            },
-            failure: function (response) {
-                alert(response.d);
-            }
-        });
-    };
+   
     getMedicines(false);
-    $("#AddMedicineButton").click(function () {
-        addMedicines();
-    });
+    
 });

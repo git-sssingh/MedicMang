@@ -66,7 +66,7 @@ namespace MedicalAgencyManagement
                         var totalBill = new Models.Summery
                         {
                             Name = "Bill till Now",
-                            Icon = "ion-documents",
+                            Icon = "ion-document",
                             Count = Convert.ToInt32(manufacturerList.Rows[0][4])
                         };
                         var totalBillToday = new Models.Summery
