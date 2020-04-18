@@ -14,52 +14,59 @@
                     <div class="form-horizontal">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                                <label for="inputEmail3" class="col-sm-4 control-label">Name</label>
 
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Customername" placeholder="Medicine Name"/>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="name" placeholder="Medicine Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Manufacturer</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Manufacturer</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" id="manufacturer" placeholder="Manufacturer"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Expity Date</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Medical Representative</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="mr" placeholder="Medical Representative"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-4 control-label">Expity Date</label>
+
+                                <div class="col-sm-8">
                                     <input type="date" class="form-control" id="expiryDate" placeholder="Expiry Date"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Mg</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Mg</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
                                     <input type="number" class="form-control" id="mg" placeholder="MG"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Price</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Price</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
                                     <input type="number" class="form-control" id="price" placeholder="Price"/>
                                 </div>
                             </div>
                              <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Current Quantity</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Current Quantity</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
                                     <input type="number" class="form-control" id="quantity" placeholder="Quantity" />
                                 </div>
                             </div>
                              <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Description</label>
+                                <label for="inputPassword3" class="col-sm-4 control-label">Description</label>
 
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="MedicineDescription" placeholder="Description" ></textarea>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" id="medicineDescription" placeholder="Description" ></textarea>
                                  
                                 </div>
                             </div>
