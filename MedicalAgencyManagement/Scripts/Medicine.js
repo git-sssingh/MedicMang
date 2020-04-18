@@ -42,7 +42,6 @@ $(document).ready(function () {
                     'lengthChange': true,
                     'searching': true,
                     'ordering': true,
-                    'info': true,
                     'autoWidth': true
                 });
             },

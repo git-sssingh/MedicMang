@@ -103,6 +103,7 @@
                                     <th>Expiry Date</th>
                                     <th>MR</th>
                                     <th>Description</th>
+                                     <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,6 +119,7 @@
                                     <th>Expiry Date</th>
                                     <th>MR</th>
                                     <th>Description</th>
+                                     <th>Edit</th>
                                 </tr>
                             </tfoot>
                         </table>
