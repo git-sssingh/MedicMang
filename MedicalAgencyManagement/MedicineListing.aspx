@@ -38,7 +38,7 @@
                                 <label for="inputPassword3" class="col-sm-4 control-label">Expity Date</label>
 
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="expiryDate" placeholder="Expiry Date"/>
+                                    <input type="datetime" class="form-control" id="expiryDate" placeholder="Expiry Date"/>
                                 </div>
                             </div>
                             <div class="form-group">

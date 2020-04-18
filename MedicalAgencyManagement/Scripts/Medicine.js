@@ -10,7 +10,7 @@ $(document).ready(function () {
             if (value.Id === medicineId) {
                 $('#name').val(value.Name);
                 $('#manufacturer').val(value.Manufacturer);
-                $('#expiryDate').val(new Date(value.ExpiryDate));
+                $('#expiryDate').val(moment(new Date(value.ExpiryDate), 'MMMM Do YYYY'));
                 $('#mg').val(value.Mg);
                 $('#price').val(value.Price);
                 $('#quantity').val(value.Quantity);
