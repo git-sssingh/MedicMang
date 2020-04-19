@@ -20,13 +20,7 @@ $(document).ready(function () {
     deleteData = function (id) {
         $.each(originalData, function (index, value) {
             if (value.Id === id) {
-                var currentQuantity = $('#' + id).val();
-                if (currentQuantity <= 0) {
-                    alert("Quantity of " + value.Name + " is less than zero");
-                }
-                else {
-                    $('#total' + id).text(value.Price * currentQuantity);
-                }
+                $('#row'+id).remove();
             }
         });
     };
@@ -68,7 +62,7 @@ $(document).ready(function () {
             $.each(originalData, function (index, value) {
                 if (currentData[0] === value.Name && currentData[1] === value.Mg && currentData[2] === value.Manufacturer) {
                     $('#example2 tbody')
-                        .append('<tr><td>'
+                        .append('<tr id=row' + value.Id + '><td>'
                             + value.Name
                             + '</td><td>'
                             + value.Price
