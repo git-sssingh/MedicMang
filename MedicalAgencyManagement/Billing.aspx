@@ -18,6 +18,7 @@
                     </div>
                     <div class="box-body">
                         <div class="col-lg-10">
+                            <span>Medicine Name - MG - Brand Name - Price</span>
                             <input id="SearchBox" class="form-control" type="text"  />
                         </div>
                         <div class="col-lg-2">
@@ -28,14 +29,13 @@
                             <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Sr.No.</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Mg</th>
                                     <th>Manufacturer</th>
                                     <th>Quantity</th>
-                                    <th>Description</th>
-                                    <th>Edit</th>
+                                    <th>Total</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,14 +43,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Sr.No.</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Mg</th>
                                     <th>Manufacturer</th>
                                     <th>Quantity</th>
-                                    <th>Description</th>
-                                    <th>Edit</th>
+                                    <th>Total</th>
+                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>
