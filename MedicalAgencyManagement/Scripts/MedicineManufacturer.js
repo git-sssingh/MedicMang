@@ -18,6 +18,10 @@ $(document).ready(function () {
             type: "POST",
             url: '/MedicineManufacturer.aspx/GetManufacturerList',
             contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+                $("#loader").show();
+                $("#example2").hide();
+            },
             success: function (data) {
                 manufacturerList = data.d;
                 if (isAdd) {
@@ -40,6 +44,8 @@ $(document).ready(function () {
                     'info': true,
                     'autoWidth': true
                 });
+                $("#loader").hide();
+                $("#example2").show();
             },
             failure: function (response) {
                 alert(response.d);

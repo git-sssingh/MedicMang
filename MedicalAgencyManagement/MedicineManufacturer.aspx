@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -56,6 +57,9 @@
                         </div>
                     </div>
                     <div class="box-body">
+                        <div id='loader' style='display: none; text-align:center'>
+                            <img src='dist/img/ajax-loader.gif'>
+                        </div>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
