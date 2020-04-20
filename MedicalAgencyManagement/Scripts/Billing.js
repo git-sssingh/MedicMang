@@ -3,6 +3,8 @@ var medicineList = [];
 var addedMedicines = [];
 var changeData;
 var deleteData;
+var sumCalculator;
+
 $(document).ready(function () {
     changeData = function (id) {
         $.each(originalData, function (index, value) {
@@ -16,6 +18,7 @@ $(document).ready(function () {
                 }
             }
         });
+        sumCalculator();
     };
     deleteData = function (id) {
         $.each(originalData, function (index, value) {
@@ -23,6 +26,7 @@ $(document).ready(function () {
                 $('#row'+id).remove();
             }
         });
+        sumCalculator();
     };
     var getMedicines = function () {
         $.ajax({
@@ -34,13 +38,14 @@ $(document).ready(function () {
                 $.each(data.d, function (index, value) {
                     medicineList.push(value.Name + "~" + value.Mg +"~" + value.Manufacturer + "~" + value.Price);
                 });
-                console.log(medicineList);
+                
                 $('#example2').DataTable({
                     'paging': false,
                     'lengthChange': false,
                     'searching': false,
                     'ordering': false,
                     'autoWidth': true,
+                    'totalCol': true,
                     'language': {
                         "zeroRecords": " "
                     }
@@ -73,11 +78,21 @@ $(document).ready(function () {
                         + '</td><td>'
                         + '<input type="number" id=' + value.Id + ' class="mytextbox" value="1" onkeyup=changeData(' + "'" + value.Id + "'" + ') onclick=changeData(' + "'" + value.Id + "'" + ') />'
                         + '</td><td>'
-                        + '<span id=total' + value.Id + '>' + value.Price+'</span>'
-                        + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=deleteData(' + "'" + value.Id + "'" + ')><i class="fa fa-trash" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                        + '<span class="individualTotal" id=total' + value.Id + '>' + value.Price+'</span>'
+                            + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=deleteData(' + "'" + value.Id + "'" + ')><i class="fa fa-trash" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                    sumCalculator();
                 }
             });
         }
     });
-   
+    sumCalculator = function () {
+        var sum = 0;
+        $('tr').each(function () {
+            $(this).find('.individualTotal').each(function () {
+                var combat = $(this)[0].innerText;
+                sum += parseInt(combat);
+            });
+            $('#totalAmount').html("Total Amount: "+sum);
+        });
+    };
 });

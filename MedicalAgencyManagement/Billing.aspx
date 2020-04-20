@@ -12,17 +12,17 @@
                         </div>
                         <div class="col-sm-6">
                             <div style="text-align:right; margin-top:-8px">
-                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> New Billing</button>
+                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> New Customer</button>
                         </div>
                         </div>
                     </div>
                     <div class="box-body">
-                        <div class="col-lg-10">
-                            <span>Medicine Name - MG - Brand Name - Price</span>
-                            <input id="SearchBox" class="form-control" type="text"  />
+                        <div class="col-lg-8">
+                            <i style="color:darkgray">Search Medicine by Name (Medicine Name - MG - Brand Name - Price)</i>
+                            <input id="SearchBox" class="form-control" type="text" placeholder="Search Medicine by Name"  />
                         </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                        <div class="col-lg-4">
+                            <h3 id="totalAmount"></h3> 
                         </div>
                         <br /><br />
                         <div class="col-lg-12">
@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <script src="Scripts/Billing.js"></script>
 </asp:Content>
