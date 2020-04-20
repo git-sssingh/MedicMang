@@ -4,8 +4,34 @@ var addedMedicines = [];
 var changeData;
 var deleteData;
 var sumCalculator;
-
+var getUrlParameter;
 $(document).ready(function () {
+    getUrlParameter = function getUrlParameter() {
+        var sPageURL = window.location.search.substring(0);
+        if (sPageURL) {
+            var sURLVariables = sPageURL.split('=');
+            if (sURLVariables[1]) {
+                $.ajax({
+                    type: "POST",
+                    url: '/Customers.aspx/GetCustomerById',
+                    data: '{cutomerId : "' + sURLVariables[1] + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        console.log(data.d);
+                       
+                        $("#Customername i").text(data.d.Name);
+                        $("#Customeremail i").text(data.d.EmailId);
+                        $("#Customerphone i").text(data.d.PhoneNo);
+                    },
+                    failure: function (response) {
+                        alert(response.d);
+                    }
+                });
+            }
+        }
+            
+    };
+    getUrlParameter();
     changeData = function (id) {
         $.each(originalData, function (index, value) {
             if (value.Id === id) {

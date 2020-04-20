@@ -59,6 +59,53 @@ namespace MedicalAgencyManagement
             }
         }
 
+
+        [WebMethod(EnableSession = true)]
+        public static Models.GetCustomer GetCustomerById(string cutomerId)
+        {
+            var obj = new Models.GetCustomer();
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            string agencyId = string.Empty;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else
+            {
+                agencyId = sessionData.Split(',')[2];
+            }
+            Guid agencyPublicId;
+            bool isAgencyValid = Guid.TryParse(agencyId, out agencyPublicId);
+            if (isAgencyValid)
+            {
+                if (DataBaseConnection.Instance != null)
+                {
+                    var customerData = DataBaseConnection.Instance.SelectQueryExecuter("exec GetCustomerById '" + agencyPublicId + "','" + cutomerId + "'");
+                    if (customerData.Rows.Count > 0)
+                    {
+                        obj = new Models.GetCustomer
+                        {
+                            Id = Convert.ToString(customerData.Rows[0][0]),
+                            Name = Convert.ToString(customerData.Rows[0][1]),
+                            Address = Convert.ToString(customerData.Rows[0][4]),
+                            PhoneNo = Convert.ToString(customerData.Rows[0][3]),
+                            EmailId = Convert.ToString(customerData.Rows[0][2]),
+                            City = Convert.ToString(customerData.Rows[0][5]),
+                            Pin = Convert.ToString(customerData.Rows[0][7]),
+                            State = Convert.ToString(customerData.Rows[0][6]),
+                            CreateDate = Convert.ToString(customerData.Rows[0][8])
+                        };
+                    }
+                }
+                return obj;
+            }
+            else
+            {
+                return obj;
+            }
+        }
+
+
         [WebMethod(EnableSession = true)]
         public static string AddCustomer(string Name, string EmailId,string PhoneNo, string Address,string City,string State,string Pin)
         {

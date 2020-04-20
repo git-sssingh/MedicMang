@@ -8,13 +8,18 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="col-sm-6">
-                            <h3 class="box-title" style="margin-left:-12px; margin-top:2px">New Billing</h3>
+                            <h3 id="newHead" class="box-title" style="margin-left: -12px; margin-top: 2px">New Billing</h3>
                         </div>
                         <div class="col-sm-6">
-                            <div style="text-align:right; margin-top:-8px">
-                            <button type="button" style="margin-right:-14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i> New Customer</button>
+                            <div style="text-align: right; margin-top: -8px">
+                                <button type="button" style="margin-right: -14px" class="btn bg-maroon margin" data-toggle="modal" data-target="#modal-default"><i class="glyphicon glyphicon-plus"></i>New Customer</button>
+                            </div>
                         </div>
-                        </div>
+                        <div class="col-sm-12"><h3>Cutomer Details: </h3></div>
+                        <div class="col-sm-4" id="Customername"><b>Name: </b><i style="color:gainsboro"></i></div>
+                        <div class="col-sm-4" id="Customeremail"><b>Email Id: </b><i style="color:gainsboro"></i></div>
+                        <div class="col-sm-4" id="Customerphone"><b>Contact No.: </b><i style="color:gainsboro"></i></div>
+                        
                     </div>
                     <div class="box-body">
                         <div class="col-lg-8">
