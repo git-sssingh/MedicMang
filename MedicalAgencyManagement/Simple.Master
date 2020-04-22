@@ -108,17 +108,18 @@
                                 <!-- User Account: style can be found in dropdown.less -->
                                 <li class="dropdown user user-menu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                        <asp:Label ID="userName" class="hidden-xs" runat="server" Text=""></asp:Label>
+                                        <img src="dist/img/avatar04.png" class="user-image" alt="User Image">
+                                        Welcome <asp:Label ID="userName" class="hidden-xs" runat="server" Text=""></asp:Label>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <!-- User image -->
                                         <li class="user-header">
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="dist/img/avatar04.png" class="img-circle" alt="User Image">
 
                                             <p>
                                                 <asp:Literal ID="name" runat="server"></asp:Literal>
-                                              <small>Member since Nov. 2012</small>
+                                              <small>
+                                                  <asp:Literal ID="agencyid" runat="server"></asp:Literal></small>
                                             </p>
                                         </li>
                                         

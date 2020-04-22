@@ -21,6 +21,7 @@ namespace MedicalAgencyManagement
                     var sessionData = Convert.ToString(Session["MediMangUser"]);
                     userName.Text = sessionData.Split(',')[0];
                     name.Text = userName.Text;
+                    agencyid.Text = "AGENCY ID: "+sessionData.Split(',')[2].ToUpper();
                 }
             }
         }
