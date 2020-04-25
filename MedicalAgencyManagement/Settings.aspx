@@ -37,20 +37,35 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="col-xs-12">
                             <label>Primary Contact Number</label>
                             <input id="agencyContactNoPrimary" class="form-control" type="text" />
                         </div>
-                        <div class="form-group">
+                        <div class="col-xs-12"><br />
                             <label>Secondary Contact Number</label>
                             <input id="agencyContactNoSecondary" class="form-control" type="text" />
                         </div>
-                        <div class="form-group">
+                        <div class="col-xs-12"><br />
                             <label>Email Id</label>
                             <input id="agencyEmailId" class="form-control" type="text" />
                         </div>
-                        <div class="form-group">
+                        <div class="col-xs-12"><br />
+                            <label>GST Number</label>
+                            <input id="agencyGstId" class="form-control" type="text" />
+                        </div>
+                          <div class="col-xs-6"><br />
+                            <label>Center GST Rate</label>
+                            <input id="agencyCenterGstRate" class="form-control" type="text" />
+                        </div>
+                         <div class="col-xs-6"><br />
+                            <label>State GST Rate</label>
+                            <input id="agencyStateGstRate" class="form-control" type="text" />
+                        </div>
+                        <div class="col-xs-12"><br />
                             <input id="GeneraButton" class="btn btn-default pull-right" type="button" value="Save Changes" />
+                        </div>
+                        <div class="col-xs-12"><br />
+                           <label id="msgFirst"></label>
                         </div>
                     </div>
                 </div>
@@ -62,7 +77,7 @@
     <div>
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Settings for Agency</h3>
+                <h3 class="box-title">Logo for Agency</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -71,30 +86,19 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label>GST Number</label>
-                            <input id="agencyGstId" class="form-control" type="text" />
+                        <div class="col-xs-6">
+                            <label>Logo</label>
+                            <input id="logo" type="file" />
                         </div>
-                        <div class="form-group">
-                            <label>GST Rate</label>
-                            <input id="agencyGstRate" class="form-control" type="text" />
+                        <div class="col-xs-6">
+                            <input id="GeneraButton2" class="btn btn-default pull-right" type="button" value="Upload Logo" />
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Primary Contact Number</label>
-                            <input id="agencyContactNoPrimary2" class="form-control" type="text" />
+                        <div class="col-xs-12"><br />
+                            <img id="agencyLogo" alt="" style="height:150px; width:150px" src="dist/img/defaultlogo2.png" />
                         </div>
-                        <div class="form-group">
-                            <label>Secondary Contact Number</label>
-                            <input id="agencyContactNoSecondary2" class="form-control" type="text" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email Id</label>
-                            <input id="agencyEmailId2" class="form-control" type="text" />
-                        </div>
-                        <div class="form-group">
-                            <input id="GeneraButton2" class="btn btn-default pull-right" type="button" value="Save Changes" />
+                        
+                        <div class="col-xs-12"><br />
+                           <label id="msgSecond"></label>
                         </div>
                     </div>
                 </div>
@@ -103,4 +107,5 @@
             </div>
         </div>
     </div>
+    <script src="Scripts/Settings.js"></script>
 </asp:Content>

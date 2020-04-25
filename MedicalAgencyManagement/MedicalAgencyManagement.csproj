@@ -6283,6 +6283,8 @@
     <Content Include="dist\img\credit\paypal2.png" />
     <Content Include="dist\img\credit\visa.png" />
     <Content Include="dist\img\default-50x50.gif" />
+    <Content Include="dist\img\defaultLogo.png" />
+    <Content Include="dist\img\defaultLogo2.png" />
     <Content Include="dist\img\icons.png" />
     <Content Include="dist\img\mediMang-backgroundImage-2.jpg" />
     <Content Include="dist\img\mediMang-backgroundImage.jpg" />
@@ -6492,6 +6494,7 @@
     <Content Include="Scripts\defaultPage.js" />
     <Content Include="Scripts\Medicine.js" />
     <Content Include="Scripts\MedicineManufacturer.js" />
+    <Content Include="Scripts\Settings.js" />
     <Content Include="Settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -6563,6 +6566,7 @@
       <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GetSetting.cs" />
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\MedicineManufacturer.cs" />
     <Compile Include="Models\Summery.cs" />
