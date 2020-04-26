@@ -64,5 +64,48 @@ namespace MedicalAgencyManagement
                 return result;
             }
         }
+
+        [WebMethod(EnableSession = true)]
+        public static string UpdateSettings(string Name, string PrimaryPhoneNo, string SecondaryPhoneNo, string EmailId, string Address, string City, string State, decimal StateGst, decimal CenterGst,string GstNo, string Pin)
+        {
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            string agencyId = string.Empty;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else
+            {
+                agencyId = sessionData.Split(',')[2];
+            }
+            Guid agencyPublicId;
+            bool isAgencyValid = Guid.TryParse(agencyId, out agencyPublicId);
+            string outPut = string.Empty;
+            if (isAgencyValid)
+            {
+                if (DataBaseConnection.Instance != null)
+                {
+                    DataBaseConnection.Instance.SelectQueryExecuter("exec UpdateSetting '"
+                        + Name + "','"
+                        + EmailId + "','"
+                        + PrimaryPhoneNo + "','"
+                        + SecondaryPhoneNo + "','"
+                        + Address + "','"
+                        + City + "','"
+                        + State + "','"
+                        + GstNo + "','"
+                        + StateGst + "','"
+                        + CenterGst + "','"
+                        + Pin + "','"
+                        + agencyPublicId + "','"
+                        + outPut + "'");
+                }
+                return outPut;
+            }
+            else
+            {
+                return "Incorrect Agency!";
+            }
+        }
     }
 }

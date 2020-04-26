@@ -62,6 +62,9 @@
                             <input id="agencyStateGstRate" class="form-control" type="text" />
                         </div>
                         <div class="col-xs-12"><br />
+                            <div id='loader' class="btn btn-default pull-left" style='display: none; text-align: center'>
+                                <img src='dist/img/ajax-loader.gif'>
+                            </div>
                             <input id="GeneraButton" class="btn btn-default pull-right" type="button" value="Save Changes" />
                         </div>
                         <div class="col-xs-12"><br />

@@ -45,42 +45,62 @@ $(document).ready(function () {
                     $('#agencyStateGstRate').val(settings.StateGst);
                     $('#agencyLogo').attr("src", settings.Logo);
                 }
+                
+                
             },
             failure: function (response) {
                 alert(response.d);
+                
             }
         });
     };
 
     // Add Method
-    var addCustomers = function () {
-        var postSustomerData = {};
-        postSustomerData.Name = $('#CustomerName').val();
-        postSustomerData.PhoneNo = $('#CustomerPhoneNo').val();
-        postSustomerData.EmailId = $('#CustomerEmailId').val();
-        postSustomerData.Address = $('#CustomerAddress').val();
-        postSustomerData.City = $('#CustomerCity').val();
-        postSustomerData.State = $('#CustomerState').val();
-        postSustomerData.Pin = $('#CustomerPin').val();
+    var updateSetting = function () {
+        var settingData = {};
+        settingData.Name = $('#agencyName').val();
+        settingData.Address = $('#agencyInvoiceAddress').val();
+        settingData.PrimaryPhoneNo = $('#agencyContactNoPrimary').val();
+        settingData.SecondaryPhoneNo = $('#agencyContactNoSecondary').val();
+        settingData.EmailId = $('#agencyEmailId').val();
+        settingData.City = $('#agencyCity').val();
+        settingData.Pin = $('#agencyPin').val();
+        settingData.State = $('#agencyState').val();
+        settingData.StateGst = $('#agencyStateGstRate').val();
+        settingData.CenterGst = $('#agencyCenterGstRate').val();
+        settingData.GstNo = $('#agencyGstId').val();
         $.ajax({
             type: "POST",
-            url: '/Customers.aspx/AddCustomer',
-            data: "{Name : '" + postSustomerData.Name
-                + "', PhoneNo : '"
-                + postSustomerData.PhoneNo
+            url: '/Settings.aspx/UpdateSettings',
+            beforeSend: function () {
+                $("#loader").show();
+            },
+            data: "{Name : '" + settingData.Name
+                + "', PrimaryPhoneNo : '"
+                + settingData.PrimaryPhoneNo
+                + "', SecondaryPhoneNo : '"
+                + settingData.SecondaryPhoneNo
                 + "',EmailId :'"
-                + postSustomerData.EmailId
+                + settingData.EmailId
                 + "',Address :'"
-                + postSustomerData.Address
+                + settingData.Address
                 + "',City:'"
-                + postSustomerData.City
+                + settingData.City
                 + "',State:'"
-                + postSustomerData.State
+                + settingData.State
+                + "',StateGst :'"
+                + settingData.StateGst
+                + "',CenterGst :'"
+                + settingData.CenterGst
+                + "',GstNo :'"
+                + settingData.GstNo
                 + "',Pin :'"
-                + postSustomerData.Pin + "'}",
+                + settingData.Pin + "'}",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                getCustomers(true);
+                getSettings();
+                $("#loader").hide();
+                $('#msgFirst').text("Updated successfully!");
             },
             failure: function (response) {
                 alert(response.d);
@@ -88,4 +108,7 @@ $(document).ready(function () {
         });
     };
     getSettings();
+    $("#GeneraButton").click(function () {
+        updateSetting();
+    });
 });
