@@ -18,8 +18,6 @@ $(document).ready(function () {
                     data: '{cutomerId : "' + sURLVariables[1] + '"}',
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        console.log(data.d);
-
                         $("#Customername i").text(data.d.Name);
                         $("#Customeremail i").text(data.d.EmailId);
                         $("#Customerphone i").text(data.d.PhoneNo);
@@ -152,4 +150,31 @@ $(document).ready(function () {
             }
         }
     };
+
+    var addCustomers = function () {
+        var postSustomerData = {};
+        postSustomerData.Name = $('#CustomerName').val();
+        postSustomerData.PhoneNo = $('#CustomerPhoneNo').val();
+        postSustomerData.EmailId = $('#CustomerEmailId').val();
+        postSustomerData.Address = $('#CustomerAddress').val();
+        postSustomerData.City = $('#CustomerCity').val();
+        postSustomerData.State = $('#CustomerState').val();
+        postSustomerData.Pin = $('#CustomerPin').val();
+        $.ajax({
+            type: "POST",
+            url: '/Customers.aspx/AddCustomer',
+            data: "{Name : '" + postSustomerData.Name
+                + "', PhoneNo : '" + postSustomerData.PhoneNo + "',EmailId :'" + postSustomerData.EmailId + "',Address :'" + postSustomerData.Address + "',City:'" + postSustomerData.City + "',State:'" + postSustomerData.State + "',Pin :'" + postSustomerData.Pin + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                window.location.href = "/billing.aspx?customerId=" + data.d;
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    };
+    $("#AddCustomerButton").click(function () {
+        addCustomers();
+    });
 });
