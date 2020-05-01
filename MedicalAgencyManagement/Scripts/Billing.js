@@ -5,6 +5,7 @@ var changeData;
 var deleteData;
 var sumCalculator;
 var getUrlParameter;
+var getCustomerById;
 $(document).ready(function () {
     getUrlParameter = function getUrlParameter() {
         var sPageURL = window.location.search.substring(0);
@@ -18,7 +19,7 @@ $(document).ready(function () {
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         console.log(data.d);
-                       
+
                         $("#Customername i").text(data.d.Name);
                         $("#Customeremail i").text(data.d.EmailId);
                         $("#Customerphone i").text(data.d.PhoneNo);
@@ -29,7 +30,9 @@ $(document).ready(function () {
                 });
             }
         }
-            
+        else {
+            $("#selectedCustomerArea").hide();
+        }     
     };
     getUrlParameter();
     changeData = function (id) {
@@ -118,7 +121,35 @@ $(document).ready(function () {
                 var combat = $(this)[0].innerText;
                 sum += parseInt(combat);
             });
-            $('#totalAmount').html("Total Amount: "+sum);
+            $('#totalAmount').html("Total Amount: &#x20b9; <b style='color:#d81b60'>"+sum+"</b>");
         });
+    };
+
+    getCustomerById = function () {
+        var sPageURL = window.location.search.substring(0);
+        if (sPageURL) {
+            var sURLVariables = sPageURL.split('=');
+            if (sURLVariables[1]) {
+                $.ajax({
+                    type: "POST",
+                    url: '/Customers.aspx/GetCustomerById',
+                    data: "{cutomerId : '" + sURLVariables[1] + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#CustomerName').val(data.d.Name);
+                        $('#CustomerPhoneNo').val(data.d.PhoneNo);
+                        $('#CustomerEmailId').val(data.d.EmailId);
+                        $('#CustomerAddress').val(data.d.Address);
+                        $('#CustomerCreateDate').val(data.d.CreateDate);
+                        $('#CustomerCity').val(data.d.City);
+                        $('#CustomerState').val(data.d.State);
+                        $('#CustomerPin').val(data.d.Pin);
+                    },
+                    failure: function (response) {
+                        alert(response.d);
+                    }
+                });
+            }
+        }
     };
 });
