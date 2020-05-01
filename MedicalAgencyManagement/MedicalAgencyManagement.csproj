@@ -6495,6 +6495,7 @@
     <Content Include="Scripts\Medicine.js" />
     <Content Include="Scripts\MedicineManufacturer.js" />
     <Content Include="Scripts\Settings.js" />
+    <Content Include="Scripts\sqlScript.sql" />
     <Content Include="Settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
