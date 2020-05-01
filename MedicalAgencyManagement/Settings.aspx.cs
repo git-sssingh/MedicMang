@@ -107,5 +107,11 @@ namespace MedicalAgencyManagement
                 return "Incorrect Agency!";
             }
         }
+
+        [WebMethod(EnableSession = true)]
+        public static string FileUpload(HttpContext context) {
+            var file = HttpContext.Current.Request.Files;
+            return "shashi";
+        }
     }
 }

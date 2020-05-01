@@ -65,10 +65,11 @@
                             <div id='loader' class="btn btn-default pull-left" style='display: none; text-align: center'>
                                 <img src='dist/img/ajax-loader.gif'>
                             </div>
+                             <label id="msgFirst" style="color:forestgreen"></label>
                             <input id="GeneraButton" class="btn btn-default pull-right" type="button" value="Save Changes" />
                         </div>
                         <div class="col-xs-12"><br />
-                           <label id="msgFirst"></label>
+                          
                         </div>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
                     <div class="col-md-6">
                         <div class="col-xs-6">
                             <label>Logo</label>
-                            <input id="logo" type="file" />
+                            <input id="logo" type="file" /><label id="msgSecond" style="color:forestgreen"></label>
                         </div>
                         <div class="col-xs-6">
                             <input id="GeneraButton2" class="btn btn-default pull-right" type="button" value="Upload Logo" />
@@ -101,7 +102,7 @@
                         </div>
                         
                         <div class="col-xs-12"><br />
-                           <label id="msgSecond"></label>
+                           
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,6 @@ $(document).ready(function () {
                 $('#agencyContactNoPrimary').val(value.City);
                 $('#agencyContactNoSecondary').val(value.State);
                 $('#agencyEmailId').val(value.Pin);
-
                 $('#agencyGstId').val(value.CreateDate);
                 $('#agencyCenterGstRate').val(value.City);
                 $('#agencyStateGstRate').val(value.State);
@@ -43,7 +42,7 @@ $(document).ready(function () {
                     $('#agencyGstId').val(settings.GstNo);
                     $('#agencyCenterGstRate').val(settings.CenterGst);
                     $('#agencyStateGstRate').val(settings.StateGst);
-                    $('#agencyLogo').attr("src", settings.Logo);
+                    $('#agencyLogo').attr("src", "MediaUploader/" + settings.Logo);
                 }
                 
                 
@@ -101,6 +100,7 @@ $(document).ready(function () {
                 getSettings();
                 $("#loader").hide();
                 $('#msgFirst').text("Updated successfully!");
+                setTimeout(function () { $('#msgFirst').text(""); }, 5000);
             },
             failure: function (response) {
                 alert(response.d);
@@ -110,5 +110,36 @@ $(document).ready(function () {
     getSettings();
     $("#GeneraButton").click(function () {
         updateSetting();
+    });
+
+
+
+
+    function sendFile() {
+
+        var formData = new FormData();
+        formData.append('file', $('#logo')[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'fileUploader.ashx',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (status) {
+                if (status !== 'error') {
+                    $('#msgSecond').text("Logo Uploaded!");
+                    setTimeout(function () { $('#msgSecond').text(""); }, 5000);
+                    var my_path = "MediaUploader/" + status;
+                    $("#agencyLogo").attr("src", my_path);
+                }
+            },
+            error: function () {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+    $("#GeneraButton2").click(function () {
+        sendFile();
     });
 });
