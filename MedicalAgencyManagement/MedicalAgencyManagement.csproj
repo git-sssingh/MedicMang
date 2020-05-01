@@ -6307,6 +6307,7 @@
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="Files\New Text Document.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Invoice.aspx" />
     <Content Include="InvoiceSetting.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="ManageUsers.aspx" />
@@ -6533,6 +6534,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="InvoiceSetting.aspx.cs">
       <DependentUpon>InvoiceSetting.aspx</DependentUpon>
