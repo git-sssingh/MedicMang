@@ -49,6 +49,30 @@ $(document).ready(function () {
         settingData.StateGst = $('#agencyStateGstRate').val();
         settingData.CenterGst = $('#agencyCenterGstRate').val();
         settingData.GstNo = $('#agencyGstId').val();
+        if (!settingData.Name) {
+            $('#msgFirst').text("Agency name is required!");
+            $('#msgFirst').css('color', 'red');
+            $("#agencyName").focus();
+            return false;
+        }
+        if (!settingData.Address) {
+            $('#msgFirst').text("Agency Address is required!");
+            $('#msgFirst').css('color', 'red');
+            $("#agencyInvoiceAddress").focus();
+            return false;
+        }
+        if (!settingData.PrimaryPhoneNo) {
+            $('#msgFirst').text("Agency Primary Phone No. is required!");
+            $('#msgFirst').css('color', 'red');
+            $("#agencyContactNoPrimary").focus();
+            return false;
+        }
+        if (!settingData.EmailId) {
+            $('#msgFirst').text("Agency Email Id is required!");
+            $('#msgFirst').css('color', 'red');
+            $("#agencyEmailId").focus();
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: '/Settings.aspx/UpdateSettings',

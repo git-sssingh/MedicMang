@@ -39,15 +39,15 @@
                     <div class="col-md-6">
                         <div class="col-xs-12">
                             <label>Primary Contact Number</label>
-                            <input id="agencyContactNoPrimary" class="form-control" type="text" />
+                            <input id="agencyContactNoPrimary" class="form-control" type="tel" />
                         </div>
                         <div class="col-xs-12"><br />
                             <label>Secondary Contact Number</label>
-                            <input id="agencyContactNoSecondary" class="form-control" type="text" />
+                            <input id="agencyContactNoSecondary" class="form-control" type="tel" />
                         </div>
                         <div class="col-xs-12"><br />
                             <label>Email Id</label>
-                            <input id="agencyEmailId" class="form-control" type="text" />
+                            <input id="agencyEmailId" class="form-control" type="email" />
                         </div>
                         <div class="col-xs-12"><br />
                             <label>GST Number</label>
