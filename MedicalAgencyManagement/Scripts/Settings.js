@@ -1,28 +1,9 @@
 ﻿// Scope related issue, so need to declare it first and then use it.
 // https://stackoverflow.com/questions/41527655/uncaught-referenceerror-function-is-not-defined-at-htmlbuttonelement-onclick
 
-var editCustomer;
 var settings;
 
 $(document).ready(function () {
-    editGenralSetting = function editCustomer(CustomerId) {
-        $.each(CustomerList, function (index, value) {
-            if (value.Id === CustomerId) {
-                $('#agencyName').val(value.Name);
-                $('#agencyInvoiceAddress').val(value.PhoneNo);
-                $('#agencyCity').val(value.EmailId);
-                $('#agencyState').val(value.Address);
-                $('#agencyPin').val(value.CreateDate);
-                $('#agencyContactNoPrimary').val(value.City);
-                $('#agencyContactNoSecondary').val(value.State);
-                $('#agencyEmailId').val(value.Pin);
-                $('#agencyGstId').val(value.CreateDate);
-                $('#agencyCenterGstRate').val(value.City);
-                $('#agencyStateGstRate').val(value.State);
-                $('#agencyLogo').val(value.Pin);
-            }
-        });
-    };
     var getSettings = function () {
         $.ajax({
             type: "POST",
@@ -118,25 +99,36 @@ $(document).ready(function () {
     function sendFile() {
 
         var formData = new FormData();
-        formData.append('file', $('#logo')[0].files[0]);
-        $.ajax({
-            type: 'POST',
-            url: 'fileUploader.ashx',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (status) {
-                if (status !== 'error') {
-                    $('#msgSecond').text("Logo Uploaded!");
-                    setTimeout(function () { $('#msgSecond').text(""); }, 5000);
-                    var my_path = "MediaUploader/" + status;
-                    $("#agencyLogo").attr("src", my_path);
-                }
-            },
-            error: function () {
-                alert("Whoops something went wrong!");
+        if ($('#logo')[0].files[0]) {
+            if ($('#logo')[0].files[0].type === 'image/png' || $('#logo')[0].files[0].type === 'image/jpeg') {
+                formData.append('file', $('#logo')[0].files[0]);
+                console.log($('#logo')[0].files[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: 'fileUploader.ashx',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (status) {
+                        if (status !== 'error') {
+                            $('#msgSecond').text("Logo Uploaded!");
+                            $('#msgSecond').css('color', 'forestgreen');
+                            setTimeout(function () { $('#msgSecond').text(""); }, 5000);
+                            var my_path = "MediaUploader/" + status;
+                            $("#agencyLogo").attr("src", my_path);
+                        }
+                    },
+                    error: function () {
+                        alert("Whoops something went wrong!");
+                    }
+                });
             }
-        });
+            else {
+                $('#msgSecond').text("only jpg or png image is accepted!");
+                $('#msgSecond').css('color', 'red');
+                return false;
+            }
+        }
     }
 
     $("#GeneraButton2").click(function () {

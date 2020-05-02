@@ -177,4 +177,9 @@ $(document).ready(function () {
     $("#AddCustomerButton").click(function () {
         addCustomers();
     });
+    $("#goToInvoice").click(function (){
+        console.log(originalData);
+        console.log(addedMedicines);
+        //console.log(originalData);
+    });
 });
