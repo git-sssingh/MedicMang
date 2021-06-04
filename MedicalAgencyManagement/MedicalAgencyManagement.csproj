@@ -6493,6 +6493,7 @@
     <Content Include="Scripts\Customer.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\defaultPage.js" />
+    <Content Include="Scripts\ManageUser.js" />
     <Content Include="Scripts\Medicine.js" />
     <Content Include="Scripts\MedicineManufacturer.js" />
     <Content Include="Scripts\Settings.js" />
@@ -6582,6 +6583,7 @@
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\MedicineManufacturer.cs" />
     <Compile Include="Models\Summery.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.aspx.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
@@ -6597,6 +6599,7 @@
     <Compile Include="Simple.Master.designer.cs">
       <DependentUpon>Simple.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Common.cs" />
     <Compile Include="Utility\DataBaseConnection.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,9 +3,13 @@
 
 var editCustomer;
 var CustomerList;
-
+var SelectedCustomerId;
+var customerGoingToBeEdit = false;
+var table = $('#example2 tbody');
 $(document).ready(function () {
-    editCustomer = function editCustomer(CustomerId) {
+  editCustomer = function editCustomer(CustomerId) {
+    customerGoingToBeEdit = true;
+    SelectedCustomerId = CustomerId;
         $.each(CustomerList, function (index, value) {
             if (value.Id === CustomerId) {
                 $('#CustomerName').val(value.Name);
@@ -26,12 +30,8 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 CustomerList = data.d;
-                if (isAdd) {
-                    $('#example2').DataTable().destroy();
-                }
                 $.each(data.d, function (index, value) {
-                    $('#example2 tbody')
-                        .append('<tr><td>'
+                  table.append('<tr><td>'
                             + (index + 1)
                             + '</td><td>'
                             + value.Name
@@ -40,7 +40,9 @@ $(document).ready(function () {
                             + '</td><td>'
                             + value.PhoneNo
                             + '</td><td>'
-                            + value.Address                            + '</td><td>'                            + value.CreateDate
+                            + value.Address
+                            + '</td><td>'
+                            + value.CreateDate
                         + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span><span style="margin-left:5px" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><a href="billing.aspx?customerId=' + value.Id+'"><i class="fa fa-paperclip" style="font-size: 1.5em; color: #c70039;"></i></a></span></td></tr>');
                 });
                 $('#example2').DataTable({
@@ -49,7 +51,8 @@ $(document).ready(function () {
                     'searching': true,
                     'ordering': true,
                     'info': true,
-                    'autoWidth': true
+                  'autoWidth': true,
+                  'bRetrieve': true
                 });
 
             },
@@ -59,30 +62,52 @@ $(document).ready(function () {
         });
     };
 
-    // Add Method
-    var addCustomers = function () {
-        var postSustomerData = {};
-        postSustomerData.Name = $('#CustomerName').val();
-        postSustomerData.PhoneNo = $('#CustomerPhoneNo').val();
-        postSustomerData.EmailId = $('#CustomerEmailId').val();
-        postSustomerData.Address = $('#CustomerAddress').val();
-        postSustomerData.City = $('#CustomerCity').val();
-        postSustomerData.State = $('#CustomerState').val();
-        postSustomerData.Pin = $('#CustomerPin').val();
-        $.ajax({
-            type: "POST",
-            url: '/Customers.aspx/AddCustomer',
-            data: "{Name : '" + postSustomerData.Name
-                + "', PhoneNo : '" + postSustomerData.PhoneNo + "',EmailId :'" + postSustomerData.EmailId + "',Address :'" + postSustomerData.Address + "',City:'" + postSustomerData.City + "',State:'" + postSustomerData.State + "',Pin :'" + postSustomerData.Pin + "'}",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                getCustomers(true);
-            },
-            failure: function (response) {
-                alert(response.d);
-            }
-        });
-    };
+  var addCustomers = function () {
+    var postCustomerData = {};
+    postCustomerData.Name = $('#CustomerName').val();
+    postCustomerData.PhoneNo = $('#CustomerPhoneNo').val();
+    postCustomerData.EmailId = $('#CustomerEmailId').val();
+    postCustomerData.Address = $('#CustomerAddress').val();
+    postCustomerData.City = $('#CustomerCity').val();
+    postCustomerData.State = $('#CustomerState').val();
+    postCustomerData.Pin = $('#CustomerPin').val();
+
+    var urlToPint = customerGoingToBeEdit ? "/Customers.aspx/UpdateCustomer" : "/Customers.aspx/AddCustomer";
+    var customerDate;
+    if (customerGoingToBeEdit) {
+      customerDate = "{Name : '" + postCustomerData.Name + "', PhoneNo : '" + postCustomerData.PhoneNo
+        + "',EmailId :'" + postCustomerData.EmailId
+        + "',Address :'" + postCustomerData.Address
+        + "',City:'" + postCustomerData.City
+        + "',State:'" + postCustomerData.State
+        + "',Pin :'" + postCustomerData.Pin
+        + "',CustomerId:'" + SelectedCustomerId + "'}";
+    }
+    else {
+      customerDate = "{Name: '" + postCustomerData.Name
+        + "', PhoneNo : '" + postCustomerData.PhoneNo
+        + "',EmailId :'" + postCustomerData.EmailId
+        + "',Address :'" + postCustomerData.Address
+        + "',City:'" + postCustomerData.City
+        + "',State:'" + postCustomerData.State
+        + "',Pin :'" + postCustomerData.Pin + "'}";
+    }
+    $.ajax({
+      type: "POST",
+      url: urlToPint,
+      data: customerDate,
+      contentType: "application/json; charset=utf-8",
+      success: function (data) {
+        table.append('');
+        customerGoingToBeEdit = false;
+        customerDate = null;
+        getCustomers(true);
+      },
+      failure: function (response) {
+        alert(response.d);
+      }
+    });
+  };
     getCustomers(false);
     $("#AddCustomerButton").click(function () {
         addCustomers();

@@ -144,5 +144,44 @@ namespace MedicalAgencyManagement
                 return "Incorrect Agency!";
             }
         }
+
+        [WebMethod(EnableSession = true)]
+        public static string UpdateCustomer(string Name, string EmailId, string PhoneNo, string Address, string City, string State, string Pin, string CustomerId)
+        {
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            string agencyId;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else
+            {
+                agencyId = sessionData.Split(',')[2];
+            }
+            bool isAgencyValid = Guid.TryParse(agencyId, out Guid agencyPublicId);
+            string outPut = string.Empty;
+            if (isAgencyValid)
+            {
+                if (DataBaseConnection.Instance != null)
+                {
+                    DataBaseConnection.Instance.SelectQueryExecuter("exec UpdateCustomer '"
+                        + Name + "','"
+                        + EmailId + "','"
+                        + PhoneNo + "','"
+                        + Address + "','"
+                        + City + "','"
+                        + State + "','"
+                        + Pin + "','"
+                        + agencyPublicId + "','"
+                        + CustomerId + "','"
+                        + outPut + "'");
+                }
+                return outPut;
+            }
+            else
+            {
+                return "Incorrect Agency!";
+            }
+        }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using MedicalAgencyManagement.Utility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MedicalAgencyManagement
 {
@@ -15,6 +12,7 @@ namespace MedicalAgencyManagement
         {
 
         }
+
         [WebMethod(EnableSession = true)]
         public static List<Models.Summery> GetSummery()
         {
@@ -41,7 +39,7 @@ namespace MedicalAgencyManagement
                     {
                         var totalMedicine = new Models.Summery
                         {
-                            Name = "Medicines",
+                            Name = "Vehicles",
                             Icon = "ion-bag",
                             Count = Convert.ToInt32(manufacturerList.Rows[0][0])
                         };
@@ -51,43 +49,9 @@ namespace MedicalAgencyManagement
                             Icon = "ion-person-add",
                             Count = Convert.ToInt32(manufacturerList.Rows[0][1])
                         };
-                        var totalDoctor = new Models.Summery
-                        {
-                            Name = "Doctors",
-                            Icon = "ion-man",
-                            Count = Convert.ToInt32(manufacturerList.Rows[0][2])
-                        };
-                        var totalMR = new Models.Summery
-                        {
-                            Name = "Medical Representative",
-                            Icon = "ion-medkit",
-                            Count = Convert.ToInt32(manufacturerList.Rows[0][3])
-                        };
-                        var totalBill = new Models.Summery
-                        {
-                            Name = "Bill till Now",
-                            Icon = "ion-document",
-                            Count = Convert.ToInt32(manufacturerList.Rows[0][4])
-                        };
-                        var totalBillToday = new Models.Summery
-                        {
-                            Name = "Bill Today",
-                            Icon = "ion-bag",
-                            Count = Convert.ToInt32(manufacturerList.Rows[0][5])
-                        }; 
-                        var totalManufacturers = new Models.Summery
-                        {
-                            Name = "Manufacturer",
-                            Icon = "ion-bag",
-                            Count = Convert.ToInt32(manufacturerList.Rows[0][6])
-                        };
+                        
                         result.Add(totalMedicine);
                         result.Add(totalCustomer);
-                        result.Add(totalDoctor);
-                        result.Add(totalMR);
-                        result.Add(totalBill);
-                        result.Add(totalBillToday);
-                        result.Add(totalManufacturers);
                     }
                 }
                 return result;

@@ -41,7 +41,8 @@ $(document).ready(function () {
                     alert("Quantity of " + value.Name + " is less than zero");
                 }
                 else {
-                    $('#total' + id).text(value.Price * currentQuantity);
+                    var currentPrice = $("input[name='"+id+"']").val();
+                    $('#total' + id).text(currentPrice * currentQuantity);
                 }
             }
         });
@@ -97,7 +98,7 @@ $(document).ready(function () {
                         .append('<tr id=row' + value.Id + '><td>'
                             + value.Name
                             + '</td><td>'
-                            + value.Price
+                        + '<input type="number" name=' + value.Id + ' class="mytextbox" value=' + value.Price + ' onkeyup=changeData(' + "'" + value.Id + "'" + ') onclick=changeData(' + "'" + value.Id + "'" + ') />'
                             + '</td><td>'
                             + value.Mg
                             + '</td><td>'
