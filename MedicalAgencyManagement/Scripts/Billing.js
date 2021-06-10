@@ -1,17 +1,23 @@
 ﻿var originalData = [];
 var medicineList = [];
 var addedMedicines = [];
+var addedServices = [];
 var changeData;
 var deleteData;
 var sumCalculator;
 var getUrlParameter;
 var getCustomerById;
+var newArray = [];
+var getBrands;
+var SelectModel;
+var customerId;
 $(document).ready(function () {
     getUrlParameter = function getUrlParameter() {
         var sPageURL = window.location.search.substring(0);
         if (sPageURL) {
             var sURLVariables = sPageURL.split('=');
-            if (sURLVariables[1]) {
+          if (sURLVariables[1]) {
+            customerId = sURLVariables[1];
                 $.ajax({
                     type: "POST",
                     url: '/Customers.aspx/GetCustomerById',
@@ -48,12 +54,15 @@ $(document).ready(function () {
         });
         sumCalculator();
     };
-    deleteData = function (id) {
-        $.each(originalData, function (index, value) {
-            if (value.Id === id) {
-                $('#row'+id).remove();
-            }
-        });
+  deleteData = function (id, customeData) {
+    for (var i = 0; i < addedServices.length; i++) {
+      if (addedServices[i].CustomInfo === customeData) {
+        addedServices.splice(i, 1);
+      }
+    }
+    console.log(addedServices);
+    var row = id.parentNode.parentNode;
+    row.parentNode.removeChild(row);
         sumCalculator();
     };
     var getMedicines = function () {
@@ -88,7 +97,81 @@ $(document).ready(function () {
     $("#SearchBox").autocomplete({
         source: medicineList
     });
+  $('#BillingButton').on("click", function () {
+    if (addedServices && addedServices.length>0) {
+      if (!addedServices[0].VehicleBrandId) {
+        $('#customerVehicleBrand').focus();
+        $('#messageAfterSuccess').text("Vehicle Brand require! Delete added service and again try!");
+        return;
+      }
+      if (!addedServices[0].VehicleNo) {
+        $('#customerNewVehicleNo').focus();
+        $('#messageAfterSuccess').text("Vehicle No. require! Delete added service and again try!");
+        return;
+      }
+      var dataToSend = JSON.stringify({ 'data': addedServices });
+      $.ajax({
+        type: "POST",
+        url: '/Billing.aspx/AddBilling',
+        contentType: "application/json; charset=utf-8",
+        data: dataToSend,
+        success: function (data) {
+        },
+        failure: function (response) {
+          alert(response.d);
+        }
+      });
+    }
+    else {
+      $('#messageAfterSuccess').text("Service Details require!");
+    }
+  });
 
+  $('#AddDetails').on("click", function () {
+    if (!$('#ServiceDetails').val()) {
+      $('#messageAfterSuccess').text("Service Details require!");
+      $('#ServiceDetails').focus();
+      return;
+    }
+    if (!$('#prince').val()) {
+      $('#messageAfterSuccess').text("prince require!");
+      $('#prince').focus();
+      return;
+    }
+    if (!$('#quantity').val()) {
+      $('#messageAfterSuccess').text("quantity require!");
+      $('#quantity').focus();
+      return;
+    }
+    var currentArrau = [];
+    var dateObject = {};
+    dateObject.CustomInfo = $('#ServiceDetails').val();
+    dateObject.Price = $('#prince').val();
+    dateObject.Quantity = $('#quantity').val();
+    dateObject.Comment = $('#customeComment').val();
+    dateObject.CustomerId = customerId;
+    dateObject.VehicleNo = $('#customerNewVehicleNo').val();
+    dateObject.VehicleBrandId = $('#customerVehicleBrand').val();
+    dateObject.VehicleType = $('#CustomerVehicelTypes').val();
+    currentArrau.push(dateObject);
+    addedServices.push(dateObject);
+    $.each(currentArrau, function (index, value) {
+        $('#example2 tbody')
+          .append('<tr id=row' + index + '><td>'
+          + value.CustomInfo
+            + '</td><td>'
+          + value.Price
+            + '</td><td>'
+          + value.Quantity
+          + '</td><td>'
+          + '<span class="individualTotal" id=total' + value.Price + '>' +parseInt(value.Quantity) * parseInt(value.Price)+'</span>'
+          + '</td><td>'
+          + value.Comment 
+          + '</td><td><div id=' + index + ' onclick=deleteData(this,"' + value.CustomInfo+'")><i class="fa fa-trash" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+        sumCalculator();
+      
+    });
+  });
     $("#SearchBox").on("change", function (e) {
         var currentData = e.target.value.split('~');
         if (currentData) {
@@ -107,7 +190,7 @@ $(document).ready(function () {
                         + '<input type="number" id=' + value.Id + ' class="mytextbox" value="1" onkeyup=changeData(' + "'" + value.Id + "'" + ') onclick=changeData(' + "'" + value.Id + "'" + ') />'
                         + '</td><td>'
                         + '<span class="individualTotal" id=total' + value.Id + '>' + value.Price+'</span>'
-                            + '</td><td><div data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=deleteData(' + "'" + value.Id + "'" + ')><i class="fa fa-trash" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
+                            + '</td><td><div id=' + index + ' onclick=deleteData(' + "'" + index + "'" + ')><i class="fa fa-trash" style="font-size: 1.5em; color: Mediumslateblue;"></i></div></td></tr>');
                     sumCalculator();
                 }
             });
@@ -179,8 +262,42 @@ $(document).ready(function () {
         addCustomers();
     });
     $("#goToInvoice").click(function (){
-        console.log(originalData);
-        console.log(addedMedicines);
-        //console.log(originalData);
+
     });
+  getBrands = function () {
+    $.ajax({
+      type: "POST",
+      url: '/Billing.aspx/GetBrands',
+      contentType: "application/json; charset=utf-8",
+      success: function (data) {
+        $.each(data.d, function (index, value) {
+          console.log('appending...');
+          $('#customerVehicleBrand').append('<option value="' + value.Id + '">' + value.BrandName + '</option>');
+        });
+      },
+      failure: function (response) {
+        alert(response.d);
+      }
+    });
+  };
+
+  getBrands();
+  console.log($('#customerVehicleBrand').value);
+  SelectModel = function (control) {
+    $.ajax({
+      type: "POST",
+      url: '/Billing.aspx/GetModels',
+      data: "{brandId : '" + control.value + "'}",
+      contentType: "application/json; charset=utf-8",
+      success: function (data) {
+        $('#customerVehicleSubBrand').empty();
+        $.each(data.d, function (index, value) {
+          $('#customerVehicleSubBrand').append('<option value="' + value.Id + '">' + value.BrandName + '</option>');
+        });
+      },
+      failure: function (response) {
+        alert(response.d);
+      }
+    });
+  }
 });

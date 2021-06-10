@@ -6312,7 +6312,7 @@
     <Content Include="logout.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="MedicineListing.aspx" />
-    <Content Include="MedicineManufacturer.aspx" />
+    <Content Include="VehicleBrands.aspx" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -6499,6 +6499,7 @@
     <Content Include="Scripts\Settings.js" />
     <Content Include="Scripts\sqlScript.sql" />
     <Content Include="Settings.aspx" />
+    <Content Include="VehicleHistory.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -6571,12 +6572,13 @@
     <Compile Include="MedicineListing.aspx.designer.cs">
       <DependentUpon>MedicineListing.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MedicineManufacturer.aspx.cs">
-      <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
+    <Compile Include="Models\Billing.cs" />
+    <Compile Include="VehicleBrands.aspx.cs">
+      <DependentUpon>VehicleBrands.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MedicineManufacturer.aspx.designer.cs">
-      <DependentUpon>MedicineManufacturer.aspx</DependentUpon>
+    <Compile Include="VehicleBrands.aspx.designer.cs">
+      <DependentUpon>VehicleBrands.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\GetSetting.cs" />
@@ -6601,6 +6603,13 @@
     </Compile>
     <Compile Include="Utility\Common.cs" />
     <Compile Include="Utility\DataBaseConnection.cs" />
+    <Compile Include="VehicleHistory.aspx.cs">
+      <DependentUpon>VehicleHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleHistory.aspx.designer.cs">
+      <DependentUpon>VehicleHistory.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower_components\bootstrap-colorpicker\.bower.json" />
