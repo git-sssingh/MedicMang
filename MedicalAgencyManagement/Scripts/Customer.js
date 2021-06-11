@@ -29,7 +29,8 @@ $(document).ready(function () {
             url: '/Customers.aspx/GetCustomerList',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                CustomerList = data.d;
+              CustomerList = data.d;
+              $("#example2 tbody tr").remove();
                 $.each(data.d, function (index, value) {
                   table.append('<tr><td>'
                             + (index + 1)
@@ -43,7 +44,7 @@ $(document).ready(function () {
                             + value.Address
                             + '</td><td>'
                             + value.CreateDate
-                    + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span><span style="margin-left:5px" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><a href="billing.aspx?customerId=' + value.Id + '"><i class="fa fa-wrench" style="font-size: 1.5em; color: #c70039;"></i></a><span style="margin-left:5px" ><a href="billing.aspx?customerId=' + value.Id +'"><i class="fa fa-bicycle" style="font-size: 1.5em; color: #c70039;"></i></a></span></span></td></tr>');
+                    + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span><span style="margin-left:5px" id=' + index + ' onclick=editCustomer(' + "'" + value.Id + "'" + ')><a href="billing.aspx?customerId=' + value.Id + '"><i class="fa fa-wrench" style="font-size: 1.5em; color: #c70039;"></i></a><span style="margin-left:5px" ><a href="VehicleHistory.aspx?customerId=' + value.Id +'"><i class="fa fa-bicycle" style="font-size: 1.5em; color: #c70039;"></i></a></span></span></td></tr>');
                 });
                 $('#example2').DataTable({
                     'paging': true,
@@ -102,6 +103,7 @@ $(document).ready(function () {
         customerGoingToBeEdit = false;
         customerDate = null;
         getCustomers(true);
+        $('#closeCustomerModel').trigger('click');
       },
       failure: function (response) {
         alert(response.d);

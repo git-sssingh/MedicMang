@@ -29,10 +29,7 @@ $(document).ready(function () {
       contentType: "application/json; charset=utf-8",
       success: function (data) {
         UserList = data.d;
-
-        if (isAdd) {
-          $('#example2').DataTable().destroy();
-        }
+        $("#example2 tbody tr").remove();
         $.each(data.d, function (index, value) {
           $('#example2 tbody')
             .append('<tr><td>'
