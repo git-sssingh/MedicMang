@@ -138,5 +138,83 @@ namespace MedicalAgencyManagement
                 return new List<ServicingDetails>();
             }
         }
+
+        [WebMethod(EnableSession = true)]
+        public static CustomerInvoice GetInvoiceBillingDetails(string customerId, string vehicleNumber, string createdDate)
+        {
+            var sessionData = Convert.ToString(HttpContext.Current.Session["MediMangUser"]);
+            var result = new CustomerInvoice();
+            string agencyId = string.Empty;
+            if (string.IsNullOrEmpty(sessionData))
+            {
+                return null;
+            }
+            else
+            {
+                agencyId = sessionData.Split(',')[2];
+            }
+            Guid agencyPublicId;
+            bool isAgencyValid = Guid.TryParse(agencyId, out agencyPublicId);
+
+            if (isAgencyValid)
+            {
+
+                if (DataBaseConnection.Instance != null)
+                {
+                    var date = DateTime.Parse(createdDate);
+                    var invoiceData = DataBaseConnection.Instance.SelectSetQueryExecuter("exec GetCustomerBilling '" + agencyPublicId + "','" + customerId + "','" + vehicleNumber + "','" + date.ToString("yyyy-MM-dd") + "'");
+                    if (invoiceData.Tables[0].Rows.Count > 0)
+                    {
+                        result.Agency.Name = Convert.ToString(invoiceData.Tables[0].Rows[0][0]);
+                        result.Agency.EmailId = Convert.ToString(invoiceData.Tables[0].Rows[0][1]);
+                        result.Agency.PrimaryPhoneNo = Convert.ToString(invoiceData.Tables[0].Rows[0][2]);
+                        result.Agency.SecondaryPhoneNo = Convert.ToString(invoiceData.Tables[0].Rows[0][3]);
+                        result.Agency.Address = Convert.ToString(invoiceData.Tables[0].Rows[0][4]);
+                        result.Agency.State = Convert.ToString(invoiceData.Tables[0].Rows[0][6]);
+                        result.Agency.Pin = Convert.ToString(invoiceData.Tables[0].Rows[0][7]);
+                        result.Agency.City = Convert.ToString(invoiceData.Tables[0].Rows[0][5]);
+                        result.Agency.GstNo = Convert.ToString(invoiceData.Tables[0].Rows[0][9]);
+                        result.Agency.StateGst = Convert.ToString(invoiceData.Tables[0].Rows[0][10]);
+                        result.Agency.CenterGst = Convert.ToString(invoiceData.Tables[0].Rows[0][11]);
+                        result.Agency.Logo = Convert.ToString(invoiceData.Tables[0].Rows[0][12]);
+                    }
+                    if (invoiceData.Tables[1].Rows.Count > 0)
+                    {
+                        result.Customer.Name = Convert.ToString(invoiceData.Tables[1].Rows[0][1]);
+                        result.Customer.EmailId = Convert.ToString(invoiceData.Tables[1].Rows[0][2]);
+                        result.Customer.PhoneNo = Convert.ToString(invoiceData.Tables[1].Rows[0][3]);
+                        result.Customer.Address = Convert.ToString(invoiceData.Tables[1].Rows[0][4]);
+                        result.Customer.City = Convert.ToString(invoiceData.Tables[1].Rows[0][5]);
+                        result.Customer.State = Convert.ToString(invoiceData.Tables[1].Rows[0][6]);
+                        result.Customer.Pin = Convert.ToString(invoiceData.Tables[1].Rows[0][7]);
+                        result.Customer.CreateDate = Convert.ToString(invoiceData.Tables[1].Rows[0][8]);
+                    }
+                    if (invoiceData.Tables[3].Rows.Count > 0)
+                    {
+                        result.VehicleBrand.BrandName = Convert.ToString(invoiceData.Tables[3].Rows[0][0]);
+                        result.VehicleBrand.SubBrand = Convert.ToString(invoiceData.Tables[3].Rows[0][1]);
+                        result.VehicleBrand.VehicleType = Convert.ToString(invoiceData.Tables[3].Rows[0][2]);
+                    }
+                    if (invoiceData.Tables[2].Rows.Count > 0)
+                    {
+                        for (int i = 0; i < invoiceData.Tables[2].Rows.Count; i++)
+                        {
+                            var sd = new ServicingDetails();
+                            sd.CustomInfo = Convert.ToString(invoiceData.Tables[2].Rows[i][0]);
+                            sd.Quantity = Convert.ToInt32(invoiceData.Tables[2].Rows[i][1]);
+                            sd.Comment = Convert.ToString(invoiceData.Tables[2].Rows[i][2]);
+                            sd.Price = Convert.ToInt32(invoiceData.Tables[2].Rows[i][3]);
+                            sd.CreatedDate = Convert.ToString(invoiceData.Tables[2].Rows[i][4]);
+                            result.ServiceDetails.Add(sd);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return new CustomerInvoice();
+            }
+            return result;
+        }
     }
 }

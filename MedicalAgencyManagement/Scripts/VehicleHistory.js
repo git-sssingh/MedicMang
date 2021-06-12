@@ -141,4 +141,8 @@ $(document).ready(function () {
     });
    
   }
+
+  $('#BillingButton').on('click', function () {
+    window.location = "invoice.aspx?/" + customerId + "/" + $('#hidePrice').is(":checked") + "/" + $('#hideTotal').is(":checked");
+  });
 });

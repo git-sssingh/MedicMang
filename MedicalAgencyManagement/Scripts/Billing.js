@@ -116,6 +116,9 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         data: dataToSend,
         success: function (data) {
+          console.log($('#hidePrice').val());
+          console.log($('#hideTotal').val());
+          $('#messageAfterSuccess').text("Successful Generated Bill!");
         },
         failure: function (response) {
           alert(response.d);

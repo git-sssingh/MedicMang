@@ -5,6 +5,7 @@ var editUser;
 var UserList;
 var SelectedUserId;
 var userGoingToBeEdit = false;
+var getUsers;
 $(document).ready(function () {
   editUser = function editUser(UserId) {
     userGoingToBeEdit = true;
@@ -22,14 +23,15 @@ $(document).ready(function () {
       }
     });
   };
-  var getUsers = function (isAdd) {
+  getUsers = function () {
+    console.log('calling again user get');
     $.ajax({
       type: "POST",
       url: '/ManageUsers.aspx/GetUserList',
       contentType: "application/json; charset=utf-8",
       success: function (data) {
         UserList = data.d;
-        $("#example2 tbody tr").remove();
+        //$("#example2 tbody tr").remove();
         $.each(data.d, function (index, value) {
           $('#example2 tbody')
             .append('<tr><td>'
@@ -46,7 +48,7 @@ $(document).ready(function () {
             + value.Password
             + '</td><td>'
             + value.IsActive
-              + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editUser(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span><span style="margin-left:5px" id=' + index + ' onclick=editUser(' + "'" + value.Id + "'" + ')><a href="billing.aspx?UserId=' + value.Id + '"><i class="fa fa-paperclip" style="font-size: 1.5em; color: #c70039;"></i></a></span></td></tr>');
+              + '</td><td><span data-toggle="modal" data-target="#modal-default" id=' + index + ' onclick=editUser(' + "'" + value.Id + "'" + ')><i class="fa fa-pencil" style="font-size: 1.5em; color: Mediumslateblue;"></i></span></td></tr>');
         });
         $('#example2').DataTable({
           'paging': true,
@@ -75,8 +77,6 @@ $(document).ready(function () {
     postUserData.City = $('#UserCity').val();
     postUserData.State = $('#UserState').val();
     postUserData.Pin = $('#UserPin').val();
-    console.log('....post user data...');
-    console.log(postUserData);
     var urlToPint = userGoingToBeEdit ? "/ManageUsers.aspx/UpdateUser" : "/ManageUsers.aspx/AddUser";
     var UserDate;
     if (userGoingToBeEdit) {
@@ -103,16 +103,17 @@ $(document).ready(function () {
       data: UserDate,
       contentType: "application/json; charset=utf-8",
       success: function (data) {
+        $('#manageUserClose').trigger('click');
         userGoingToBeEdit = false;
         UserDate = null;
-        getUsers(true);
+        location.reload();
       },
       failure: function (response) {
         alert(response.d);
       }
     });
   };
-  getUsers(false);
+  getUsers();
   $("#AddUserButton").click(function () {
     addUsers();
   });

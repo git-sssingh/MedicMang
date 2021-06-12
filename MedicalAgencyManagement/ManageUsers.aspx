@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" id="manageUserClose" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                     <button type="button" id="AddUserButton" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -96,9 +96,9 @@
                                 <tr>
                                     <th>Sr.No.</th>
                                     <th>Name</th>
-                                    <th>Phone No.</th>
                                     <th>EmailId</th>
-                                    <th>UserName</th>
+                                    <th>Phone No.</th>
+                                    <th>Address</th>
                                     <th>Password</th>
                                     <th>Active</th>
                                     <th>Edit</th>
@@ -111,9 +111,9 @@
                                 <tr>
                                     <th>Sr.No.</th>
                                     <th>Name</th>
-                                    <th>Phone No.</th>
                                     <th>EmailId</th>
-                                    <th>UserName</th>
+                                    <th>Phone No.</th>
+                                    <th>Address</th>
                                     <th>Password</th>
                                     <th>Active</th>
                                     <th>Edit</th>

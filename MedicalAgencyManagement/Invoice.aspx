@@ -101,10 +101,10 @@
         <!-- accepted payments column -->
         <div class="col-xs-6">
           <p class="lead">Payment Methods:</p>
-          <img src="../../dist/img/credit/visa.png" alt="Visa">
-          <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-          <img src="../../dist/img/credit/american-express.png" alt="American Express">
-          <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+          <img src="../../dist/img/credit/vsa.png" alt="Visa">
+          <img src="../../dist/img/credit/mcard.png" alt="Mastercard">
+          <img src="../../dist/img/credit/gpay.png" alt="Google Pay">
+          <img src="../../dist/img/credit/paytm.png" alt="Paytm">
 
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
             Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
@@ -152,4 +152,5 @@
         </div>
       </div>
     </section>
+    <script src="Scripts/Invoice.js"></script>
 </asp:Content>

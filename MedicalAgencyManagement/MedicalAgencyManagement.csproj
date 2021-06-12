@@ -6285,6 +6285,7 @@
     <Content Include="dist\img\default-50x50.gif" />
     <Content Include="dist\img\defaultLogo.png" />
     <Content Include="dist\img\defaultLogo2.png" />
+    <Content Include="dist\img\GoldenAutoBanner.png" />
     <Content Include="dist\img\icons.png" />
     <Content Include="dist\img\mediMang-backgroundImage-2.jpg" />
     <Content Include="dist\img\mediMang-backgroundImage.jpg" />
@@ -6308,10 +6309,12 @@
     <Content Include="Files\New Text Document.txt" />
     <Content Include="Global.asax" />
     <Content Include="Invoice.aspx" />
+    <Content Include="InvoicePrint.aspx" />
     <Content Include="InvoiceSetting.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="MedicineListing.aspx" />
+    <Content Include="Scripts\Invoice.js" />
     <Content Include="Scripts\VehicleHistory.js" />
     <Content Include="VehicleBrands.aspx" />
     <Content Include="pages\calendar.html" />
@@ -6545,6 +6548,13 @@
     <Compile Include="Invoice.aspx.designer.cs">
       <DependentUpon>Invoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InvoicePrint.aspx.cs">
+      <DependentUpon>InvoicePrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvoicePrint.aspx.designer.cs">
+      <DependentUpon>InvoicePrint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InvoiceSetting.aspx.cs">
       <DependentUpon>InvoiceSetting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6574,6 +6584,7 @@
       <DependentUpon>MedicineListing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Billing.cs" />
+    <Compile Include="Models\CustomerInvoice.cs" />
     <Compile Include="Models\VehicleServicingDetail.cs" />
     <Compile Include="VehicleBrands.aspx.cs">
       <DependentUpon>VehicleBrands.aspx</DependentUpon>

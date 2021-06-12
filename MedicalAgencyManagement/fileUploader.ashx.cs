@@ -47,14 +47,18 @@ namespace MedicalAgencyManagement
                     if (!string.IsNullOrEmpty(fileName))
                     {
                         fileExtension = Path.GetExtension(fileName);
-                        if (fileExtension != ".jpg" || fileExtension != ".png" || fileExtension != ".jpeg") {
+                        if (fileExtension != ".jpg" || fileExtension != ".png" || fileExtension != ".jpeg")
+                        {
+
+                            str_image = "AgencyLogo_" + numFiles.ToString() + fileExtension;
+                            string pathToSave_100 = HttpContext.Current.Server.MapPath("~/MediaUploader/") + str_image;
+                            file.SaveAs(pathToSave_100);
+                            string updateQuery = "update dbo.Agency Set logo ='" + str_image + "' where publicId='" + agencyPublicId + "'";
+                            var settings = DataBaseConnection.Instance.SelectQueryExecuter(updateQuery);
+                        }
+                        else {
                             return;
                         }
-                        str_image = "AgencyLogo_" + numFiles.ToString() + fileExtension;
-                        string pathToSave_100 = HttpContext.Current.Server.MapPath("~/MediaUploader/") + str_image;
-                        file.SaveAs(pathToSave_100);
-                        string updateQuery = "update dbo.Agency Set logo ='" + str_image + "' where publicId='"+ agencyPublicId + "'";
-                        var settings = DataBaseConnection.Instance.SelectQueryExecuter(updateQuery);
                     }
                 }
                 context.Response.Write(str_image);

@@ -182,6 +182,16 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            <div style="text-align: left;">
+                                 <label>
+                                    <input type="checkbox" id="hidePrice" class="minimal-red">
+                                    Hide Price 
+                                  </label>
+                                <label>
+                                    <input type="checkbox" id="hideTotal" class="minimal-red">
+                                    Hide Total 
+                                  </label>
+                            </div>
                             <div style="text-align: right; margin-top: -31px">
                                 <span id="messageAfterSuccess"></span>
                                  <button id="BillingButton" type="button" style="margin-top: 20px;" class="btn bg-maroon margin" ><i class="glyphicon glyphicon-pencil"></i>Click To Generate Bill</button>

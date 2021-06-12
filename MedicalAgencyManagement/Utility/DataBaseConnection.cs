@@ -56,8 +56,29 @@ namespace MedicalAgencyManagement.Utility
                 ExceptionLoggerToDataBase(ex);
                 return new DataTable();
             }
+        }
+
+        public DataSet SelectSetQueryExecuter(string selectQuery)
+        {
+            try
+            {
+                using (var con = new SqlConnection(_connectingString))
+                {
+                    var cmd = new SqlCommand(selectQuery, con);
+                    var sda = new SqlDataAdapter(cmd);
+                    var ds = new DataSet();
+                    sda.Fill(ds);
+                    return ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLoggerToDataBase(ex);
+                return new DataSet();
+            }
 
         }
+
         /// <summary>
         /// Logging error to Database
         /// </summary>

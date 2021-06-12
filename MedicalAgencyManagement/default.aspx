@@ -22,10 +22,10 @@
 
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
 </head>
-<body class="hold-transition login-page" style="background: url(/dist/img/mediMang-backgroundImage-2.jpg) no-repeat center center fixed; background-size: cover">
+<body class="hold-transition login-page" style="background: url(/dist/img/GoldenAutoBanner.png) no-repeat center center fixed; background-size: cover">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>MediMang</a>
+    <a href="#"><b>Admin</b> Golden Auto</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
