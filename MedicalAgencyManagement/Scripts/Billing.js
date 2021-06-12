@@ -60,7 +60,6 @@ $(document).ready(function () {
         addedServices.splice(i, 1);
       }
     }
-    console.log(addedServices);
     var row = id.parentNode.parentNode;
     row.parentNode.removeChild(row);
         sumCalculator();
@@ -116,8 +115,9 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         data: dataToSend,
         success: function (data) {
-          console.log($('#hidePrice').val());
-          console.log($('#hideTotal').val());
+          addedServices = [];
+          $("#example2 tbody tr").remove();
+          $('#totalAmount').html("");
           $('#messageAfterSuccess').text("Successful Generated Bill!");
         },
         failure: function (response) {

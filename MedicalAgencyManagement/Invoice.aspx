@@ -1,156 +1,117 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simple.Master" AutoEventWireup="true" CodeBehind="Invoice.aspx.cs" Inherits="MedicalAgencyManagement.Invoice" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="invoice">
-      <!-- title row -->
-      <div class="row">
-        <div class="col-xs-12">
-          <h2 class="page-header">
-            <i class="fa fa-globe"></i> AdminLTE, Inc.
-            <small class="pull-right">Date: 2/10/2014</small>
-          </h2>
+        <!-- title row -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i>  <span id="agencyname"></span>
+                    <small class="pull-right" id="genrationDate"></small>
+                </h2>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- info row -->
-      <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-          From
+        <!-- info row -->
+        <div class="row invoice-info">
+            
+            <div class="col-sm-4 invoice-col">
+                From
           <address>
-            <strong>Admin, Inc.</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
+              <strong id="addressAgencyName"></strong>
+              <br>
+              <span id="addressAgency1"></span>
+              <br>
+              <span id="addressAgency2"></span>
+              <br>
+              Phone: <span id="addressAgencyPhone"></span>
+              <br>
+              Email: <span id="addressAgencyEmail"></span>
           </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          To
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                To
           <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
+              <strong id="customerName"></strong>
+              <br>
+              <span id="addressCustomer1"></span>
+              <br>
+              <span id="addressCustomer2"></span>
+              <br>
+              Phone: <span id="addressCustomerPhone"></span>
+              <br>
+              Email: <span id="addressCustomerEmail"></span>
           </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                <b id="invoiceNumber"></b>
+                <br />
+                <img id="agencyLogo" style="height: 100px; width: auto" />
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
-          <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
 
-      <!-- Table row -->
-      <div class="row">
-        <div class="col-xs-12 table-responsive">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>Qty</th>
-              <th>Product</th>
-              <th>Serial #</th>
-              <th>Description</th>
-              <th>Subtotal</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
-            </tbody>
-          </table>
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped" id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Qty</th>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
 
-      <div class="row">
-        <!-- accepted payments column -->
-        <div class="col-xs-6">
-          <p class="lead">Payment Methods:</p>
-          <img src="../../dist/img/credit/vsa.png" alt="Visa">
-          <img src="../../dist/img/credit/mcard.png" alt="Mastercard">
-          <img src="../../dist/img/credit/gpay.png" alt="Google Pay">
-          <img src="../../dist/img/credit/paytm.png" alt="Paytm">
+        <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-xs-6">
+                <p class="lead">Accepted Payment Methods:</p>
+                <img src="../../dist/img/credit/vsa.png" alt="Visa">
+                <img src="../../dist/img/credit/mcard.png" alt="Mastercard">
+                <img src="../../dist/img/credit/gpay.png" alt="Google Pay">
+                <img src="../../dist/img/credit/paytm.png" alt="Paytm">
 
-          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-          </p>
+                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px; height: 100px">
+                </p>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6" id="totalSection">
+                <p class="lead">Total Amount</p>
+
+                <div class="table-responsive">
+                    <table class="table" id="subTotalTable">
+                        <tbody>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-        <div class="col-xs-6">
-          <p class="lead">Amount Due 2/22/2014</p>
+        <!-- /.row -->
 
-          <div class="table-responsive">
-            <table class="table">
-              <tbody><tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
-              </tr>
-              <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
-              </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td>$265.24</td>
-              </tr>
-            </tbody></table>
-          </div>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- this row will not appear when printing -->
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <a id="printSection" target="void(0)" class="btn btn-default"><i class="fa fa-print"></i>Print</a>
 
-      <!-- this row will not appear when printing -->
-      <div class="row no-print">
-        <div class="col-xs-12">
-          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-          </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+            </div>
         </div>
-      </div>
     </section>
     <script src="Scripts/Invoice.js"></script>
 </asp:Content>

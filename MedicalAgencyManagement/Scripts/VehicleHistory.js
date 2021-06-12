@@ -14,6 +14,7 @@ var SelectVehicleNumber;
 var customerId;
 var getCustomerVehicelList;
 var SelectServicingDetails;
+var selectedDate;
 $(document).ready(function () {
   getUrlParameter = function getUrlParameter() {
     var sPageURL = window.location.search.substring(0);
@@ -102,7 +103,7 @@ $(document).ready(function () {
     if (selectedServicing.VehicleType == "3") {
       vType = "Heavy Vehicle";
     }
-
+    selectedDate = selectedServicing.CreatedDate;
     $.ajax({
       type: "POST",
       url: '/VehicleHistory.aspx/GetCustomerBilling',
@@ -110,7 +111,8 @@ $(document).ready(function () {
       contentType: "application/json; charset=utf-8",
       success: function (data) {
         console.log(data.d);
-        var totalAmount =0;
+        var totalAmount = 0;
+        $("#example2 tbody tr").remove();
         $.each(data.d, function (index, value) {
           totalAmount = totalAmount + (value.Price * value.Quantity);
             $('#example2 tbody')
@@ -143,6 +145,6 @@ $(document).ready(function () {
   }
 
   $('#BillingButton').on('click', function () {
-    window.location = "invoice.aspx?/" + customerId + "/" + $('#hidePrice').is(":checked") + "/" + $('#hideTotal').is(":checked");
+    window.location = "invoice.aspx?=" + customerId + "=" + $('#hidePrice').is(":checked") + "=" + $('#hideTotal').is(":checked") + "=" + SelectVehicleNumber + "=" + selectedDate;
   });
 });

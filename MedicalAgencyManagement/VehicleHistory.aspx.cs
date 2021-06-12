@@ -162,7 +162,7 @@ namespace MedicalAgencyManagement
                 if (DataBaseConnection.Instance != null)
                 {
                     var date = DateTime.Parse(createdDate);
-                    var invoiceData = DataBaseConnection.Instance.SelectSetQueryExecuter("exec GetCustomerBilling '" + agencyPublicId + "','" + customerId + "','" + vehicleNumber + "','" + date.ToString("yyyy-MM-dd") + "'");
+                    var invoiceData = DataBaseConnection.Instance.SelectSetQueryExecuter("exec GenerateInvoice '" + agencyPublicId + "','" + customerId + "','" + vehicleNumber + "','" + date.ToString("yyyy-MM-dd") + "'");
                     if (invoiceData.Tables[0].Rows.Count > 0)
                     {
                         result.Agency.Name = Convert.ToString(invoiceData.Tables[0].Rows[0][0]);

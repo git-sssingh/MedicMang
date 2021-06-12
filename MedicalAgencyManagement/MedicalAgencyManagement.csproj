@@ -6314,6 +6314,7 @@
     <Content Include="InvoiceSetting.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="ManageUsers.aspx" />
+    <Content Include="MediaUploader\GDLogo.png" />
     <Content Include="MedicineListing.aspx" />
     <Content Include="Scripts\Invoice.js" />
     <Content Include="Scripts\VehicleHistory.js" />
@@ -7247,7 +7248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="MediaUploader\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
