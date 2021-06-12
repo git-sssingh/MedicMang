@@ -6232,6 +6232,7 @@
     <Content Include="build\js\Tree.js" />
     <Content Include="Customers.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="DbScript\script1262021.sql" />
     <Content Include="default.aspx" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
